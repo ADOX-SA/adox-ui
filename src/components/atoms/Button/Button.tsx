@@ -1,39 +1,18 @@
-"use client";
-import React, { ComponentProps, forwardRef } from "react";
+import React, {  forwardRef } from "react";
 import styles from "./Button.module.css";
+import clsx from 'clsx';
 
-export type ButtonProps = ComponentProps<"button"> & {
-  variant?: "solid" | "outline" | "ghost" | "link" | "icon";
-  size?:
-    | "3xs"
-    | "2xs"
-    | "xs"
-    | "sm"
-    | "md"
-    | "lg"
-    | "xl"
-    | "2xl"
-    | "3xl"
-    | "full";
-  colorScheme?:
-    | "primary"
-    | "secondary"
-    | "tertiary"
-    | "success"
-    | "warning"
-    | "danger";
-  rounded?: "none" | "sm" | "md" | "lg" | "full";
-  className?: string;
-  children: React.ReactNode;
-};
+import { ButtonProps } from "./model";
+
+
 const Button: React.FC<ButtonProps> = forwardRef<
   HTMLButtonElement,
   ButtonProps
 >(
   ({
-    children,
+    children="",
     variant = "solid",
-    size = "md",
+    size = "3xs",
     colorScheme = "primary",
     rounded = "md",
     className,
@@ -41,11 +20,19 @@ const Button: React.FC<ButtonProps> = forwardRef<
   }) => {
     return (
       <button
-        className={`${styles.button} ${styles[colorScheme]} ${styles[variant]} ${styles[size]} ${styles[rounded]} ${className}`}
+        className={
+          clsx(
+            styles.button,
+            styles[`button--variant-${variant}`], 
+            styles[`button--variant-${variant}-${colorScheme}`], 
+            styles[`button--size-${size}`], 
+            styles[`button--rounded-${rounded}`],
+            className
+          )
+        }
         {...props}
       >
-        {" "}
-        {children}{" "}
+        {children}
       </button>
     );
   }
