@@ -1,4 +1,4 @@
-import React, { createElement } from "react";
+import React from "react";
 import { IconBaseProps, IconType } from "react-icons/lib";
 import * as ReactIcons from "./bundle";
 import { Lib } from "./models";
