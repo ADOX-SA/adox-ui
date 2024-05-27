@@ -1,0 +1,47 @@
+.page {
+  margin: 0 auto;
+  padding: 0 1rem;
+  width: 100%;
+  height: 100%;
+}
+
+/* MAX WIDTH */
+
+.page--maxWidth-xxs {
+  /* son 320px */
+  max-width: 20rem;
+}
+
+.page--maxWidth-xs {
+  /* son 600px */
+  max-width: 37.5rem;
+}
+
+.page--maxWidth-sm {
+  /* son 768px */
+  max-width: 48rem;
+}
+
+.page--maxWidth-md {
+  /* son 960px */
+  max-width: 60rem;
+}
+
+.page--maxWidth-lg {
+  /* son 1024px */
+  max-width: 64rem;
+}
+
+.page--maxWidth-xl {
+  /* son 1200px */
+  max-width: 75rem;
+}
+
+.page--maxWidth-2xl {
+  /* son 1400px */
+  max-width: 87.5rem;
+}
+
+.page--maxWidth-full {
+  max-width: 100%;
+}

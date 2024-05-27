@@ -7,9 +7,14 @@ import { iconsMap } from "./custom";
 interface typesPropsIcon {
   nameIcon: string;
   propsIcon?: IconBaseProps;
+  className?: string;
 }
 
-export function Icon({ nameIcon, propsIcon }: typesPropsIcon): JSX.Element {
+export function Icon({
+  nameIcon,
+  propsIcon,
+  className,
+}: typesPropsIcon): JSX.Element {
   /**
    * @param {string} nameIcon - Nombre del icono.
    */
@@ -27,6 +32,7 @@ export function Icon({ nameIcon, propsIcon }: typesPropsIcon): JSX.Element {
         children={iconObj.svg}
         width={propsIcon?.size || 24}
         height={propsIcon?.size || 24}
+        className={className}
         {...propsIcon}
       />
     );

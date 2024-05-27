@@ -1,0 +1,122 @@
+.checkbox {
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+.checkboxbase {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkbox--custom {
+  width: 1.25rem;
+  height: 1.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+  border: 1px solid var(--color-base-600);
+  border-radius: 0.25rem;
+}
+
+.checkbox--label-text {
+  padding-left: 0.125rem;
+  line-height: 0px;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-left: 0.5rem;
+  cursor: pointer;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+.checkbox--color-primary {
+  accent-color: var(--color-primary-600);
+}
+
+.checkbox--color-secondary {
+  accent-color: var(--color-secondary-700);
+}
+
+.checkbox--color-base {
+  accent-color: var(--color-base-600);
+}
+
+.checkbox--color-success {
+  accent-color: var(--color-success-600);
+}
+
+.checkbox--color-warning {
+  accent-color: var(--color-warning-700);
+  color: white;
+}
+
+.checkbox--color-danger {
+  accent-color: var(--color-danger-600);
+}
+
+.checkbox--color-info {
+  accent-color: var(--color-info-600);
+}
+
+/* SIZE LABEL */
+
+.label--size-xs {
+  font-size: 0.75rem;
+}
+
+.label--size-sm {
+  font-size: 0.875rem;
+}
+
+.label--size-md {
+  font-size: 1rem;
+}
+
+.label--size-lg {
+  font-size: 1.125rem;
+}
+
+.label--size-xl {
+  font-size: 1.25rem;
+}
+
+/* SIZE CHECKBOX*/
+
+.checkbox--size-xs {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+.checkbox--size-sm {
+  width: 1rem;
+  height: 1rem;
+}
+
+.checkbox--size-md {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.checkbox--size-lg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.checkbox--size-xl {
+  width: 2rem;
+  height: 2rem;
+}

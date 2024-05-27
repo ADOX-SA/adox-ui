@@ -13,13 +13,7 @@ export type ButtonProps = ComponentProps<"button"> & {
     | "2xl"
     | "3xl"
     | "full";
-  colorScheme?:
-    | "primary"
-    | "secondary"
-    | "tertiary"
-    | "success"
-    | "warning"
-    | "danger";
+  colorScheme?: "primary" | "secondary" | "success" | "warning" | "danger";
   rounded?: "none" | "sm" | "md" | "lg" | "full";
   className?: string;
   children: React.ReactNode;

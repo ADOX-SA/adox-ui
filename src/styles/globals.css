@@ -1,2 +1,35 @@
 @import url(normalize.css);
-@import url(tokens.css);
+@import url(color-tokens.css);
+@import url(light-tokens.css);
+
+:root {
+  --sys-shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --sys-shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  --sys-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --sys-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --sys-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+
+  /* border-radious */
+  --sys-border-radius-none: 0;
+  /* 0.125 ==  2px */
+  --sys-border-radius-sm: 0.125rem;
+  /* 0.25 == 4px */
+  --sys-border-radius-md: 0.25rem;
+  /* 0.5 == 8px */
+  --sys-border-radius-lg: 0.5rem;
+  /* 1 == 16px */
+  --sys-border-radius-xl: 1rem;
+  /* 2 == 32px */
+  --sys-border-radius-2xl: 2rem;
+  /* 100% */
+  --sys-border-radius-full: 100%;
+
+  /* border-width */
+  --sys-border-width: 1px;
+  --sys-border-width-2: 2px;
+  --sys-border-width-4: 4px;
+  --sys-border-width-8: 8px;
+
+  --sys-border-color: var(--color-divider);
+  --sys-border-style: solid;
+}
