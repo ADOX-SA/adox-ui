@@ -1,0 +1,19 @@
+.divider--color-primary {
+  background-color: var(--sys-color-primary-light);
+}
+
+.divider--color-secondary {
+  background-color: var(--sys-color-secondary-light);
+}
+
+.divider--color-base {
+  background-color: var(--sys-color-base-light);
+}
+
+.divider--color-dark {
+  background-color: var(--color-gray-500);
+}
+
+.divider--color-light {
+  background-color: var(--color-gray-200);
+}
