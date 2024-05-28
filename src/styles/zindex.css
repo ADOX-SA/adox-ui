@@ -1,0 +1,11 @@
+:root {
+  /* aqui iran todos los z-index de la aplicaciones */
+  --sys-zindex-header: 100;
+  --sys-zindex-sidenav: 200;
+  --sys-zindex-backdrop: 300;
+  --sys-zindex-modal: 400;
+  --sys-zindex-toast: 500;
+  --sys-zindex-tooltip: 600;
+  --sys-zindex-dropdown: 700;
+  --sys-zindex-popover: 800;
+}

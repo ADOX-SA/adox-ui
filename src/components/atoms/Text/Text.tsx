@@ -1,35 +1,9 @@
 "use client";
 import React, { forwardRef } from "react";
 import styles from "./Text.module.css";
-import {
-  PolymorphicComponentPropsWithRef,
-  PolymorphicRef,
-} from "@/utils/types";
+import { PolymorphicRef } from "@/utils/types";
 import clsx from "clsx";
-
-type TextProps<C extends React.ElementType> = PolymorphicComponentPropsWithRef<
-  C,
-  {
-    align?: "left" | "center" | "right";
-    size?:
-      | "3xs"
-      | "2xs"
-      | "xs"
-      | "sm"
-      | "md"
-      | "lg"
-      | "xl"
-      | "2xl"
-      | "3xl"
-      | "4xl"
-      | "5xl"
-      | "6xl";
-    emphasis?: "high" | "medium" | "low";
-    italic?: true | false;
-    underline?: true | false;
-    weight?: "thin" | "light" | "regular" | "medium" | "bold" | "bolder";
-  }
->;
+import { TextComponent, TextProps } from "./models";
 
 /**
  *
@@ -46,9 +20,6 @@ type TextProps<C extends React.ElementType> = PolymorphicComponentPropsWithRef<
  * @example <Text as="h1">Hello World</Text>
  * @example <Text as="mark">Hello World</Text>
  */
-type TextComponent = <C extends React.ElementType = "span">(
-  props: TextProps<C>
-) => React.ReactNode | React.ReactElement<C> | null; // React.ReactNode no deberia de estar pero sino rompe.
 
 export const Text: TextComponent = forwardRef(
   <C extends React.ElementType = "span">(
