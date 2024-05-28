@@ -38,6 +38,10 @@ const Divider: React.FC<DividerProps> = ({
   };
 
   if (!children) {
+    // NOTE: En margin: ${variation === "centered" ? "0 1rem" : "0"};
+    // deberia de or auto en lugar de 1rem para que sea mas flexible
+    // pero hay veces que no lo agarra bien y queda todo fullwidth
+
     return (
       <div
         className={clsx(
@@ -45,7 +49,7 @@ const Divider: React.FC<DividerProps> = ({
             display: flex;
             align-items: center;
             width: ${width};
-            margin: ${variation === "centered" ? "0 auto" : "0"};
+            margin: ${variation === "centered" ? "0 1rem" : "0"};
             height: ${thicknessmap[thickness]};
           `,
           {
