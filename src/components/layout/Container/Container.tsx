@@ -5,7 +5,7 @@ import clsx from "clsx";
 import { PolymorphicRef } from "@/utils/types";
 import { ContainerProps } from "./models";
 
-type ContainerComponent = <C extends React.ElementType = "span">(
+type ContainerComponent = <C extends React.ElementType = "div">(
   props: ContainerProps<C>
 ) => React.ReactNode | React.ReactElement<C> | null; // React.ReactNode no deberia de estar pero sino rompe.
 

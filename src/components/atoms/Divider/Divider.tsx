@@ -21,6 +21,7 @@ const Divider: React.FC<DividerProps> = ({
   variation = "fullWidth",
   thickness = "xl",
   width = "100%",
+  className,
 }) => {
   const thicknessmap: ThicknessMap = {
     xs: "1px",
@@ -44,18 +45,21 @@ const Divider: React.FC<DividerProps> = ({
 
     return (
       <div
-        className={clsx(
-          css`
-            display: flex;
-            align-items: center;
-            width: ${width};
-            margin: ${variation === "centered" ? "0 1rem" : "0"};
-            height: ${thicknessmap[thickness]};
-          `,
-          {
-            [styles[`divider--color-${colorScheme}`]]: colorScheme,
-          }
-        )}
+        className={
+          (clsx(
+            css`
+              display: flex;
+              align-items: center;
+              width: ${width};
+              margin: ${variation === "centered" ? "0 1rem" : "0"};
+              height: ${thicknessmap[thickness]};
+            `,
+            {
+              [styles[`divider--color-${colorScheme}`]]: colorScheme,
+            }
+          ),
+          className)
+        }
       />
     );
   }
@@ -79,7 +83,8 @@ const Divider: React.FC<DividerProps> = ({
 							flex: 1;
 							border-bottom:${thicknessmap[thickness]} solid ${colorSchemeMap[colorScheme]};
 							margin-left: 1rem;
-          `
+          `,
+        className
       )}
     >
       {children}
