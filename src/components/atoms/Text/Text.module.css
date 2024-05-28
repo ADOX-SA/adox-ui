@@ -1,0 +1,99 @@
+/* ALign */
+.text--align-left {
+  text-align: left;
+}
+
+.text--align-center {
+  text-align: center;
+}
+
+.text--align-right {
+  text-align: right;
+}
+
+/* Size */
+
+.text--size-3xs {
+  font-size: 8px;
+}
+
+.text--size-2xs {
+  font-size: 10px;
+}
+
+.text--size-xs {
+  font-size: 12px;
+}
+
+.text--size-sm {
+  font-size: 14px;
+}
+
+.text--size-md {
+  font-size: 16px;
+}
+
+.text--size-lg {
+  font-size: 18px;
+}
+
+.text--size-xl {
+  font-size: 20px;
+}
+
+.text--size-2xl {
+  font-size: 24px;
+}
+
+.text--size-3xl {
+  font-size: 30px;
+}
+
+.text--size-4xl {
+  font-size: 36px;
+}
+
+.text--size-5xl {
+  font-size: 48px;
+}
+
+.text--size-6xl {
+  font-size: 60px;
+}
+
+/* Weight */
+
+.text--weight-thin {
+  font-weight: 100;
+}
+
+.text--weight-light {
+  font-weight: 300;
+}
+
+.text--weight-normal {
+  font-weight: 400;
+}
+
+.text--weight-medium {
+  font-weight: 500;
+}
+
+.text--weight-bold {
+  font-weight: 700;
+}
+
+.text--weight-bolder {
+  font-weight: 900;
+}
+
+/* italic */
+.text--italic {
+  font-style: italic;
+}
+
+/* underline */
+
+.text--underline {
+  text-decoration: underline;
+}

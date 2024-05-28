@@ -1,0 +1,57 @@
+.toast {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--sys-color-surface);
+  color: var(--sys-color-on-surface);
+  box-shadow: var(--sys-shadow-sm);
+  border-radius: var(--sys-border-radius-md);
+  width: 300px;
+  height: 52px;
+  padding-left: 8px;
+  z-index: 2000;
+  overflow: hidden;
+}
+
+.progressBar {
+  position: absolute;
+  height: 10px;
+  left: 0px;
+  bottom: -7px;
+}
+
+.icon {
+  z-index: 2100;
+  margin-right: 8px;
+}
+
+.row {
+  z-index: 2100;
+}
+
+.SPINBOY {
+  animation: rotation 1.5s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.LOADBOY {
+  animation: moving 2.5s infinite ease-in-out;
+}
+
+@keyframes moving {
+  from {
+    transform: translate(-100px);
+  }
+  to {
+    transform: translate(400px);
+  }
+}
