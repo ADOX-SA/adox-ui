@@ -34,4 +34,34 @@
 
   --sys-border-color: var(--color-divider);
   --sys-border-style: solid;
+
+  --sys-font-size-3xs: 0.5rem;
+  --sys-font-size-2xs: 0.625rem;
+  --sys-font-size-xs: 0.75rem;
+  --sys-font-size-sm: 0.875rem;
+  --sys-font-size-md: 1rem;
+  --sys-font-size-lg: 1.125rem;
+  --sys-font-size-xl: 1.25rem;
+  --sys-font-size-2xl: 1.5rem;
+  --sys-font-size-3xl: 1.875rem;
+  --sys-font-size-4xl: 2.25rem;
+  --sys-font-size-5xl: 3rem;
+  --sys-font-size-6xl: 4rem;
+
+  --sys-spacing-3xs: 0.0625rem;
+  --sys-spacing-2xs: 0.125rem;
+  --sys-spacing-xs: 0.25rem;
+  --sys-spacing-sm: 0.5rem;
+  --sys-spacing-md: 1rem;
+  --sys-spacing-lg: 1.5rem;
+  --sys-spacing-xl: 2rem;
+  --sys-spacing-2xl: 3rem;
+  --sys-spacing-3xl: 4rem;
+  --sys-spacing-4xl: 6rem;
+  --sys-spacing-5xl: 8rem;
+  --sys-spacing-6xl: 12rem;
+  --sys-spacing-7xl: 16rem;
+  --sys-spacing-8xl: 24rem;
+  --sys-spacing-9xl: 32rem;
+  --sys-spacing-10xl: 40rem;
 }

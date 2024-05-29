@@ -14,51 +14,51 @@
 /* Size */
 
 .text--size-3xs {
-  font-size: 8px;
+  font-size: var(--sys-font-size-3xs);
 }
 
 .text--size-2xs {
-  font-size: 10px;
+  font-size: var(--sys-font-size-2xs);
 }
 
 .text--size-xs {
-  font-size: 12px;
+  font-size: var(--sys-font-size-xs);
 }
 
 .text--size-sm {
-  font-size: 14px;
+  font-size: var(--sys-font-size-sm);
 }
 
 .text--size-md {
-  font-size: 16px;
+  font-size: var(--sys-font-size-md);
 }
 
 .text--size-lg {
-  font-size: 18px;
+  font-size: var(--sys-font-size-lg);
 }
 
 .text--size-xl {
-  font-size: 20px;
+  font-size: var(--sys-font-size-xl);
 }
 
 .text--size-2xl {
-  font-size: 24px;
+  font-size: var(--sys-font-size-2xl);
 }
 
 .text--size-3xl {
-  font-size: 30px;
+  font-size: var(--sys-font-size-3xl);
 }
 
 .text--size-4xl {
-  font-size: 36px;
+  font-size: var(--sys-font-size-4xl);
 }
 
 .text--size-5xl {
-  font-size: 48px;
+  font-size: var(--sys-font-size-5xl);
 }
 
 .text--size-6xl {
-  font-size: 60px;
+  font-size: var(--sys-font-size-6xl);
 }
 
 /* Weight */
@@ -71,7 +71,7 @@
   font-weight: 300;
 }
 
-.text--weight-normal {
+.text--weight-regular {
   font-weight: 400;
 }
 

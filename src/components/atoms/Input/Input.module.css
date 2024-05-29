@@ -1,0 +1,71 @@
+.baseinput {
+  border: 0;
+  width: 100%;
+}
+
+.baseinput:focus {
+  outline: none;
+}
+
+.input {
+  border-color: var(--sys-color-primary);
+}
+
+/* VARIANTS */
+.input--variant-outlined {
+  border-width: 1px;
+  border-style: solid;
+}
+
+.input--variant-filled {
+  background-color: var(--sys-color-bg);
+}
+
+.input--variant-underlined {
+  border-width: 0 0 1px 0;
+  border-bottom-style: solid;
+}
+
+/* rounded */
+
+.input--rounded-xs {
+  border-radius: var(--sys-border-radius-xs);
+}
+
+.input--rounded-sm {
+  border-radius: var(--sys-border-radius-sm);
+}
+.input--rounded-md {
+  border-radius: var(--sys-border-radius-md);
+}
+
+.input--rounded-lg {
+  border-radius: var(--sys-border-radius-lg);
+}
+
+/* sizes */
+
+.input--s-xs {
+  font-size: var(--sys-font-size-xs);
+  padding: var(--sys-spacing-2xs) var(--sys-spacing-xs);
+}
+
+.input--s-sm {
+  font-size: var(--sys-font-size-sm);
+  padding: var(--sys-spacing-xs) var(--sys-spacing-sm);
+}
+
+.input--s-md {
+  font-size: var(--sys-font-size-md);
+  padding: var(--sys-spacing-sm) var(--sys-spacing-md);
+}
+
+.input--s-lg {
+  font-size: var(--sys-font-size-lg);
+  padding: var(--sys-spacing-sm) var(--sys-spacing-md);
+}
+
+.input--s-xl {
+  font-size: var(--sys-font-size-xl);
+  padding: var(--sys-spacing-sm) var(--sys-spacing-md);
+}
