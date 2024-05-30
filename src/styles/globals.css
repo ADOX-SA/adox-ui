@@ -1,7 +1,7 @@
 @import url(normalize.css);
 @import url(color-tokens.css);
 @import url(zindex.css);
-
+@import url(sizes.css);
 @import url(light-tokens.css);
 
 :root {
@@ -64,4 +64,11 @@
   --sys-spacing-8xl: 24rem;
   --sys-spacing-9xl: 32rem;
   --sys-spacing-10xl: 40rem;
+
+  --sys-input-height-xs: var(--sys-sizes-6);
+  --sys-input-height-sm: var(--sys-sizes-8);
+  --sys-input-height-md: var(--sys-sizes-10);
+  --sys-input-height-lg: var(--sys-sizes-12);
+
+  --sys-font-family: "Lato", sans-serif;
 }

@@ -4,6 +4,7 @@ import styles from "./Text.module.css";
 import { PolymorphicRef } from "@/utils/types";
 import clsx from "clsx";
 import { TextComponent, TextProps } from "./models";
+import { css } from "@emotion/css";
 
 /**
  *
@@ -32,6 +33,7 @@ export const Text: TextComponent = forwardRef(
       underline,
       weight,
       className,
+      colorScheme,
       ...props
     }: TextProps<C>,
     ref?: PolymorphicRef<C>
@@ -40,11 +42,32 @@ export const Text: TextComponent = forwardRef(
     // b | u | abbr | cite | del | dfn | em | i | ins | kbd | mark | q | s | samp | small | span | strong | sub | sup | time | var | wbr
     const Component = as || "span";
 
+    const colors = () => {
+      if (
+        [
+          "primary",
+          "secondary",
+          "success",
+          "danger",
+          "warning",
+          "info",
+          "light",
+          "dark",
+        ].includes(colorScheme)
+      ) {
+        console.log("color", colorScheme);
+        return css`
+          color: var(--sys-color-${colorScheme});
+        `;
+      }
+    };
+
     return (
       <Component
         ref={ref}
         className={clsx(
           styles.text,
+          colors(),
           {
             [styles[`text--align-${align}`]]: align,
             [styles[`text--size-${size}`]]: size,

@@ -60,12 +60,19 @@
   --sys-color-surface: var(--color-base-50);
   --sys-color-on-surface: var(--color-base-900);
 
-  --sys-button-color-contrast: var(--color-white);
+  --sys-color-background: var(--color-base-100);
+
+  --sys-text-color: var(--color-base-900);
+  --sys-text-color-secondary: var(--color-base-600);
+  --sys-text-color-disabled: var(--color-base-400);
+  --sys-text-color-hint: var(--color-base-200);
 
   /* COMPONENTS */
+  --sys-button-color-contrast: var(--color-white);
 
-  --sys-color-divider: var(--color-base-200);
   --sys-color-on-divider: var(--color-base-900);
+  --sys-color-divider: var(--color-base-200);
 
   --sys-paper-background: var(--sys-color-surface);
+  --sys-input-filled-background: var(--sys-color-background);
 }

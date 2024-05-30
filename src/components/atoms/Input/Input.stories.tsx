@@ -34,6 +34,9 @@ type Story = StoryObj<typeof Input>;
 
 export const Default = {
   args: {
-    // props
+    disabled: false,
+    color: "var(--color-gray-300)",
+    alert: true,
+    customAlert: "This is a custom alert",
   },
 } satisfies Story;

@@ -1,3 +1,9 @@
+.text {
+  color: var(--sys-text-color);
+  font-family: var(--sys-font-family);
+  margin: 0;
+  padding: 0;
+}
 /* ALign */
 .text--align-left {
   text-align: left;

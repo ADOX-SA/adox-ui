@@ -23,6 +23,6 @@ export const Default = {
     as: "h1",
     weight: "regular",
     size: "6xl",
-    color: "red",
+    colorScheme: "warning",
   },
 } satisfies Story;

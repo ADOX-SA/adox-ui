@@ -1,6 +1,11 @@
 .baseinput {
-  border: 0;
+  padding: 0;
+  display: inline-block;
+  border: hidden;
   width: 100%;
+  background: transparent;
+  padding-left: var(--sys-sizes-4);
+  padding-right: var(--sys-sizes-4);
 }
 
 .baseinput:focus {
@@ -8,7 +13,17 @@
 }
 
 .input {
-  border-color: var(--sys-color-primary);
+  border-color: var(--color-gray-300);
+  transition-duration: 300ms;
+}
+
+.alertContainer {
+  display: flex;
+  align-items: center;
+  border-radius: var(--sys-border-radius-md);
+  background-color: var(--color-red-100);
+  color: var(--color-red-900);
+  padding: var(--sys-sizes-1) var(--sys-sizes-2);
 }
 
 /* VARIANTS */
@@ -17,8 +32,18 @@
   border-style: solid;
 }
 
+.input:focus-within {
+  border-color: var(--sys-color-primary);
+}
+
 .input--variant-filled {
-  background-color: var(--sys-color-bg);
+  background-color: var(--sys-input-filled-background);
+  border: 1px solid transparent;
+}
+
+.input--variant-filled:focus-within {
+  border-width: 1px;
+  border-style: solid;
 }
 
 .input--variant-underlined {
@@ -47,25 +72,29 @@
 
 .input--s-xs {
   font-size: var(--sys-font-size-xs);
-  padding: var(--sys-spacing-2xs) var(--sys-spacing-xs);
+  line-height: var(--sys-input-height-xs);
+  height: var(--sys-input-height-xs);
 }
 
 .input--s-sm {
   font-size: var(--sys-font-size-sm);
-  padding: var(--sys-spacing-xs) var(--sys-spacing-sm);
+  line-height: var(--sys-input-height-sm);
+  height: var(--sys-input-height-sm);
 }
 
 .input--s-md {
   font-size: var(--sys-font-size-md);
-  padding: var(--sys-spacing-sm) var(--sys-spacing-md);
+  line-height: var(--sys-input-height-md);
+  height: var(--sys-input-height-md);
 }
 
 .input--s-lg {
   font-size: var(--sys-font-size-lg);
-  padding: var(--sys-spacing-sm) var(--sys-spacing-md);
+  line-height: var(--sys-input-height-lg);
+  height: var(--sys-input-height-lg);
 }
 
 .input--s-xl {
   font-size: var(--sys-font-size-xl);
-  padding: var(--sys-spacing-sm) var(--sys-spacing-md);
+  height: var(--sys-input-height-xl);
 }
