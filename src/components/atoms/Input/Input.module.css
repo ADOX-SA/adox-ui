@@ -12,20 +12,37 @@
   outline: none;
 }
 
+.baseinput:disabled {
+  background-color: var(--color-gray-100);
+  color: var(--color-gray-400);
+}
+
 .input {
   border-color: var(--color-gray-300);
   transition-duration: 300ms;
 }
 
+.alertInput {
+  border-color: var(--color-red-500);
+}
+
+.alertInput:focus-within {
+  border-color: var(--color-red-500);
+}
+
 .alertContainer {
   display: flex;
   align-items: center;
-  border-radius: var(--sys-border-radius-md);
-  background-color: var(--color-red-100);
-  color: var(--color-red-900);
+  border-radius: 0 0 var(--sys-border-radius-md) var(--sys-border-radius-md);
+  background-color: var(--color-red-50);
+  color: var(--color-red-500);
   padding: var(--sys-sizes-1) var(--sys-sizes-2);
+  min-height: var(--sys-sizes-2);
 }
 
+.label {
+  padding-left: var(--sys-sizes-1);
+}
 /* VARIANTS */
 .input--variant-outlined {
   border-width: 1px;
@@ -39,6 +56,18 @@
 .input--variant-filled {
   background-color: var(--sys-input-filled-background);
   border: 1px solid transparent;
+}
+
+.baseinput[type="file"] {
+  display: none;
+}
+
+.custom-file-upload {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--sys-sizes-1) var(--sys-sizes-2);
+  cursor: pointer;
 }
 
 .input--variant-filled:focus-within {

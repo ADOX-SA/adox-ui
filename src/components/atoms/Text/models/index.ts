@@ -1,3 +1,4 @@
+import { ThemeColors } from "@/models/Colors";
 import { PolymorphicComponentPropsWithRef } from "@/utils/types";
 
 export type TextProps<C extends React.ElementType> =
@@ -22,6 +23,7 @@ export type TextProps<C extends React.ElementType> =
       italic?: true | false;
       underline?: true | false;
       weight?: "thin" | "light" | "regular" | "medium" | "bold" | "bolder";
+      colorScheme?: ThemeColors;
     }
   >;
 

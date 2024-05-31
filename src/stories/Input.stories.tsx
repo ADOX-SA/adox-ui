@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import Input from "./Input";
+import Input from "@/components/atoms/Input/Input";
 import React from "react";
 
 const meta = {
@@ -35,8 +35,10 @@ type Story = StoryObj<typeof Input>;
 export const Default = {
   args: {
     disabled: false,
-    color: "var(--color-gray-300)",
     alert: true,
     customAlert: "This is a custom alert",
+    label: "Label",
+    placeholder: "Placeholder",
+    type: "file",
   },
 } satisfies Story;

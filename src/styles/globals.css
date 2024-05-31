@@ -70,5 +70,10 @@
   --sys-input-height-md: var(--sys-sizes-10);
   --sys-input-height-lg: var(--sys-sizes-12);
 
-  --sys-font-family: "Lato", sans-serif;
+  --sys-font-family: "Montserrat", sans-serif;
+}
+
+* {
+  font-family: var(--sys-font-family);
+  box-sizing: border-box;
 }

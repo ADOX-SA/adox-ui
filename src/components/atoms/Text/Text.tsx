@@ -43,23 +43,27 @@ export const Text: TextComponent = forwardRef(
     const Component = as || "span";
 
     const colors = () => {
+      if (!colorScheme) return;
       if (
         [
           "primary",
           "secondary",
+          "tertiary",
           "success",
-          "danger",
           "warning",
+          "danger",
           "info",
           "light",
           "dark",
         ].includes(colorScheme)
       ) {
-        console.log("color", colorScheme);
         return css`
           color: var(--sys-color-${colorScheme});
         `;
       }
+      return css`
+        color: var(--color-${colorScheme}-500);
+      `;
     };
 
     return (

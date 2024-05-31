@@ -90,14 +90,16 @@ const Button: React.FC<ButtonProps> = forwardRef<
     return (
       <button
         ref={ref}
-        className={clsx(
-          styles.button,
-          buttonVariantStyle(variant, colorScheme),
-          styles[`button--size-${size}`],
-          styles[`button--rounded-${rounded}`],
-          fullWidth && styles["button--fullWidth"],
-          className
-        )}
+        className={
+          (clsx(
+            styles.button,
+            buttonVariantStyle(variant, colorScheme),
+            styles[`button--size-${size}`],
+            styles[`button--rounded-${rounded}`],
+            fullWidth && styles["button--fullWidth"]
+          ),
+          className)
+        }
         {...props}
       >
         {children}

@@ -48,14 +48,13 @@ const Checkbox: React.FC<CheckboxProps> = forwardRef<
           ref={ref}
           hidden
           checked={checked}
-          className={clsx(
-            styles.checkboxbase,
-            {
+          className={
+            (clsx(styles.checkboxbase, {
               [styles[`checkbox--color-${colorScheme}`]]: colorScheme,
               [styles[`checkbox--size-${size}`]]: size,
-            },
-            className
-          )}
+            }),
+            className)
+          }
           {...props}
         />
         <div className={styles["checkbox--custom"]}>
