@@ -1,9 +1,12 @@
 "use client";
 import React, {
+  ChangeEvent,
   ComponentProps,
+  ForwardedRef,
   forwardRef,
   InputHTMLAttributes,
   useRef,
+  useState,
 } from "react";
 import styles from "./Input.module.css";
 import clsx from "clsx";
@@ -88,12 +91,40 @@ const Input: React.FC<InputProps> = forwardRef<HTMLInputElement, InputProps>(
 );
 
 const FileInput = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
-  const fatherRef = useRef<HTMLInputElement>();
+  const [files, setFiles] = useState<FileList>();
+  const inputRef = useRef<ForwardedRef<HTMLInputElement>>(ref);
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setFiles(e.target.files || undefined);
+    // }
+    if (props.onChange) props.onChange(e);
+  };
+
+  const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+    setFiles(e.target.files || undefined);
+    if (props.onBlur) props.onBlur(e);
+  };
+
+  const removeFiles = () => {
+    const inputReff =
+      inputRef as unknown as React.MutableRefObject<HTMLInputElement>;
+    if (inputReff.current) {
+      console.log(inputRef.current);
+      inputReff.current.files = null;
+      inputReff.current.value = "";
+      const event = new Event("change", { bubbles: true });
+      inputReff.current.dispatchEvent(event);
+      setFiles(undefined);
+      // setComplete(false);
+    }
+  };
+
   return (
-    <Container display="flex">
+    <Container display="flex" alignItems="center" className={styles.fileInput}>
       <Text
         as="label"
         htmlFor="file-upload"
+        aria-disabled={props.disabled}
         className={styles[`custom-file-upload`]}
       >
         Seleccionar Archivo{" "}
@@ -104,14 +135,29 @@ const FileInput = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
       </Text>
 
       <Text size="sm" weight="medium" colorScheme="gray">
-        {fatherRef &&
-          fatherRef.current &&
-          fatherRef.current.files &&
-          fatherRef.current.files[0].name}
+        {files?.length
+          ? files.length === 1
+            ? files[0].name
+            : `${files.length} archivos seleccion`
+          : "No ha seleccionado archivos"}
       </Text>
+      {files?.length ? (
+        <div onClick={() => removeFiles()} className={styles.clickable}>
+          <Icon
+            nameIcon="BiSolidXSquare"
+            propsIcon={{
+              size: "18px",
+              color: "var(--color-red-700)",
+            }}
+          />
+        </div>
+      ) : null}
       <input
         id="file-upload"
-        ref={ref}
+        onBlur={handleBlur}
+        onChange={handleChange}
+        multiple
+        ref={inputRef as unknown as ForwardedRef<HTMLInputElement>}
         className={clsx(styles.baseinput, {
           [styles[`input--s-${props.s}`]]: props.s,
         })}

@@ -69,6 +69,7 @@
   --sys-input-height-sm: var(--sys-sizes-8);
   --sys-input-height-md: var(--sys-sizes-10);
   --sys-input-height-lg: var(--sys-sizes-12);
+  --sys-input-height-xl: var(--sys-sizes-14);
 
   --sys-font-family: "Montserrat", sans-serif;
 }

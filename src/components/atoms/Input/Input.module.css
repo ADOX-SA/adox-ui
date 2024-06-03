@@ -70,6 +70,15 @@
   cursor: pointer;
 }
 
+[aria-disabled="true"] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
 .input--variant-filled:focus-within {
   border-width: 1px;
   border-style: solid;
@@ -78,6 +87,7 @@
 .input--variant-underlined {
   border-width: 0 0 1px 0;
   border-bottom-style: solid;
+  border-radius: 0 !important;
 }
 
 /* rounded */
@@ -125,5 +135,6 @@
 
 .input--s-xl {
   font-size: var(--sys-font-size-xl);
+  line-height: var(--sys-input-height-lg);
   height: var(--sys-input-height-xl);
 }
