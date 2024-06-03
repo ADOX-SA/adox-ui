@@ -20,5 +20,8 @@ type Story = StoryObj<typeof Button>;
 export const Default = {
   args: {
     children: <Text> TEST </Text>,
+    variant: "outline",
+    colorScheme: "primary",
+    size: "md",
   },
 } satisfies Story;

@@ -1,0 +1,18 @@
+:root {
+  --sys-spacing-3xs: 0.0625rem;
+  --sys-spacing-2xs: 0.125rem;
+  --sys-spacing-xs: 0.25rem;
+  --sys-spacing-sm: 0.5rem;
+  --sys-spacing-md: 1rem;
+  --sys-spacing-lg: 1.5rem;
+  --sys-spacing-xl: 2rem;
+  --sys-spacing-2xl: 3rem;
+  --sys-spacing-3xl: 4rem;
+  --sys-spacing-4xl: 6rem;
+  --sys-spacing-5xl: 8rem;
+  --sys-spacing-6xl: 12rem;
+  --sys-spacing-7xl: 16rem;
+  --sys-spacing-8xl: 24rem;
+  --sys-spacing-9xl: 32rem;
+  --sys-spacing-10xl: 40rem;
+}

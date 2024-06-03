@@ -58,6 +58,17 @@
   --sys-sizes-10-12: 83.333333%;
   --sys-sizes-11-12: 91.666667%;
 
+  --sys-sizes-3xs: var(--sys-sizes-1);
+  --sys-sizes-2xs: var(--sys-sizes-2);
+  --sys-sizes-xs: var(--sys-sizes-4);
+  --sys-sizes-sm: var(--sys-sizes-6);
+  --sys-sizes-md: var(--sys-sizes-8);
+  --sys-sizes-lg: var(--sys-sizes-12);
+  --sys-sizes-xl: var(--sys-sizes-16);
+  --sys-sizes-2xl: var(--sys-sizes-24);
+  --sys-sizes-3xl: var(--sys-sizes-32);
+  --sys-sizes-4xl: var(--sys-sizes-40);
+
   --sys-height-xs: 1.25rem;
   --sys-height-sm: 1.5rem;
   --sys-height-md: 2rem;
