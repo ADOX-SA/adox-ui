@@ -37,8 +37,9 @@ export const Default = {
     disabled: false,
     alert: true,
     customAlert: "This is a custom alert",
-    label: "Label",
-    placeholder: "Placeholder",
-    type: "file",
+    label: "Nombre de usuario",
+    // placeholder: "Placeholder",
+    type: "text",
+    floatLabel: true,
   },
 } satisfies Story;

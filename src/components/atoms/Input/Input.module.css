@@ -10,13 +10,23 @@
 
 .baseinput:focus {
   outline: none;
+  overflow: visible;
 }
-
 .baseinput:disabled {
   background-color: var(--color-gray-100);
   color: var(--color-gray-400);
 }
 
+.baseinput::placeholder {
+  position: absolute;
+  top: -10px;
+  left: 0;
+  padding-left: var(--sys-sizes-4);
+  padding-right: var(--sys-sizes-4);
+  color: var(--color-gray-400);
+  transition: all 0.3s ease;
+  font-size: var(--sys-font-size-xs);
+}
 .input {
   border-color: var(--color-gray-300);
   transition-duration: 300ms;
@@ -42,7 +52,9 @@
 
 .label {
   padding-left: var(--sys-sizes-1);
+  transition: all 0.3s ease;
 }
+
 /* VARIANTS */
 .input--variant-outlined {
   border-width: 1px;
