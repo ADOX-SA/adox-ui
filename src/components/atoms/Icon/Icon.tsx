@@ -1,11 +1,12 @@
 import React from "react";
 import { IconBaseProps, IconType } from "react-icons/lib";
 import * as ReactIcons from "./bundle";
-import { Lib } from "./models";
+import { IconNameBundle } from "./bundle";
 import { iconsMap } from "./custom";
+import { Lib } from "./models";
 
 interface typesPropsIcon {
-  nameIcon: string;
+  nameIcon: `adox-${keyof typeof iconsMap}` | IconNameBundle;
   propsIcon?: IconBaseProps;
   className?: string;
 }
