@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { ComponentProps } from "react";
 import clsx from "clsx";
 import { css } from "@emotion/css";
 import styles from "./Divider.module.css";
@@ -7,7 +7,7 @@ import styles from "./Divider.module.css";
 interface ThicknessMap {
   readonly [key: string]: string;
 }
-export type DividerProps = HTMLDivElement & {
+export type DividerProps = ComponentProps<"div"> & {
   colorScheme?: "primary" | "secondary" | "base" | "dark" | "light";
   children?: React.ReactNode;
   thickness?: "xs" | "sm" | "md" | "lg";
@@ -16,10 +16,10 @@ export type DividerProps = HTMLDivElement & {
 };
 
 const Divider: React.FC<DividerProps> = ({
-  colorScheme = "base",
-  children = "base",
+  colorScheme,
+  children,
   variation = "fullWidth",
-  thickness = "xl",
+  thickness = "xs",
   width = "100%",
   className,
 }) => {
@@ -45,21 +45,19 @@ const Divider: React.FC<DividerProps> = ({
 
     return (
       <div
-        className={
-          (clsx(
-            css`
-              display: flex;
-              align-items: center;
-              width: ${width};
-              margin: ${variation === "centered" ? "0 1rem" : "0"};
-              height: ${thicknessmap[thickness]};
-            `,
-            {
-              [styles[`divider--color-${colorScheme}`]]: colorScheme,
-            }
-          ),
-          className)
-        }
+        className={clsx(
+          css`
+            display: flex;
+            align-items: center;
+            width: ${width};
+            margin: ${variation === "centered" ? "0 1rem" : "0"};
+            height: ${thicknessmap[thickness]};
+          `,
+          {
+            [styles[`divider--color-${colorScheme}`]]: colorScheme,
+          },
+          className
+        )}
       />
     );
   }

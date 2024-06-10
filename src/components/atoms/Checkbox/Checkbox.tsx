@@ -1,5 +1,5 @@
 "use client";
-import React, { forwardRef } from "react";
+import React, { forwardRef, useEffect } from "react";
 import styles from "./Checkbox.module.css";
 import clsx from "clsx";
 import { Text } from "../Text";
@@ -23,16 +23,30 @@ const Checkbox: React.FC<CheckboxProps> = forwardRef<
   (
     {
       size,
-      checked,
       className,
       colorScheme = "primary",
-      icon = "check",
       label,
+      checked,
       indeterminated,
+      onClick,
       ...props
     }: CheckboxProps,
     ref: React.Ref<HTMLInputElement>
   ) => {
+    const [state, setState] = React.useState<
+      "checked" | "unchecked" | "indetermined"
+    >("indetermined");
+
+    useEffect(() => {
+      if (checked) {
+        setState("checked");
+      } else if (indeterminated) {
+        setState("indetermined");
+      } else {
+        setState("unchecked");
+      }
+    }, [checked, indeterminated]);
+
     return (
       <label
         className={clsx(
@@ -47,7 +61,7 @@ const Checkbox: React.FC<CheckboxProps> = forwardRef<
           type="checkbox"
           ref={ref}
           hidden
-          checked={checked}
+          checked={state === "checked"}
           className={
             (clsx(styles.checkboxbase, {
               [styles[`checkbox--color-${colorScheme}`]]: colorScheme,
@@ -57,12 +71,22 @@ const Checkbox: React.FC<CheckboxProps> = forwardRef<
           }
           {...props}
         />
-        <div className={styles["checkbox--custom"]}>
-          <CheckIndicator
-            checked={checked}
-            indeterminated={indeterminated}
-            icon={icon}
-          />
+        <div
+          onClick={() => {
+            if (state === "checked") {
+              setState("unchecked");
+            } else if (state === "unchecked") {
+              setState("checked");
+            } else if (state === "indetermined") {
+              setState("checked");
+            } else {
+              setState("unchecked");
+            }
+            onClick;
+          }}
+          className={styles["checkbox--custom"]}
+        >
+          <CheckIndicator state={state} />
         </div>
         <Text className={`${[styles["checkbox--label-text"]]}`}>{label}</Text>
       </label>
@@ -71,24 +95,10 @@ const Checkbox: React.FC<CheckboxProps> = forwardRef<
 );
 
 const CheckIndicator: React.FC<{
-  checked?: boolean;
-  indeterminated?: boolean;
-  icon?: string;
+  state: "checked" | "unchecked" | "indetermined";
 }> = (props) => {
-  const { checked, indeterminated, icon } = props;
-  if (indeterminated) {
-    return (
-      <Icon
-        nameIcon="FaMinus"
-        propsIcon={{
-          size: 16,
-        }}
-        className={styles.icon}
-      />
-    );
-  }
-
-  if (checked) {
+  const { state } = props;
+  if (state === "checked") {
     return (
       <Icon
         nameIcon="GiCheckMark"
@@ -99,13 +109,12 @@ const CheckIndicator: React.FC<{
       />
     );
   }
-
-  if (checked && icon) {
+  if (state === "indetermined") {
     return (
       <Icon
-        nameIcon={icon}
+        nameIcon="BiMinus"
         propsIcon={{
-          size: 24,
+          size: 16,
         }}
         className={styles.icon}
       />
