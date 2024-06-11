@@ -22,8 +22,10 @@
   position: relative;
   cursor: pointer;
   user-select: none;
-  border: 1px solid var(--color-base-600);
+  border-width: 1px;
+  border-style: solid;
   border-radius: 0.25rem;
+  padding: 0rem;
 }
 
 .checkbox--label-text {

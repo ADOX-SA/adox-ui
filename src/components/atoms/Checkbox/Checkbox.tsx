@@ -4,16 +4,20 @@ import styles from "./Checkbox.module.css";
 import clsx from "clsx";
 import { Text } from "../Text";
 import { Icon } from "../Icon";
+import { css } from "@emotion/css";
+import { ColorScheme } from "@/models/Colors";
+import { StandardSize } from "@/types/sizes";
 
 export type CheckboxProps = {
-  colorScheme?: "primary" | "secondary" | "success" | "warning" | "danger";
-  size?: "xs" | "sm" | "md" | "lg" | "xl";
+  colorScheme?: ColorScheme;
+  size?: StandardSize;
   children?: React.ReactNode;
   className?: string;
   checked?: boolean;
   indeterminated?: boolean;
   icon?: string;
   label?: string;
+  type?: "solid" | "outline";
 } & React.InputHTMLAttributes<HTMLInputElement>;
 
 const Checkbox: React.FC<CheckboxProps> = forwardRef<
@@ -28,7 +32,6 @@ const Checkbox: React.FC<CheckboxProps> = forwardRef<
       label,
       checked,
       indeterminated,
-      onClick,
       ...props
     }: CheckboxProps,
     ref: React.Ref<HTMLInputElement>
@@ -36,6 +39,37 @@ const Checkbox: React.FC<CheckboxProps> = forwardRef<
     const [state, setState] = React.useState<
       "checked" | "unchecked" | "indetermined"
     >("indetermined");
+
+    const checkboxStyle = (
+      type: "solid" | "outline",
+      state: "checked" | "unchecked" | "indetermined"
+    ) => {
+      if (state == "unchecked") {
+        return css`
+          border: 1px solid var(--color-${colorScheme}-300);
+        `;
+      }
+      switch (type) {
+        case "solid":
+          return css`
+            background-color: var(--color-${colorScheme}-500);
+            color: var(--sys-color-background);
+            border-color: var(--color-${colorScheme}-500);
+          `;
+        case "outline":
+          return css`
+            background-color: var(--sys-color-background);
+            color: var(--color-${colorScheme}-500);
+            border-color: var(--color-${colorScheme}-500);
+          `;
+        default:
+          return css`
+            background-color: var(--color-${colorScheme}-500);
+            color: var(--sys-color-background);
+            border-color: var(--color-${colorScheme}-500);
+          `;
+      }
+    };
 
     useEffect(() => {
       if (checked) {
@@ -62,13 +96,7 @@ const Checkbox: React.FC<CheckboxProps> = forwardRef<
           ref={ref}
           hidden
           checked={state === "checked"}
-          className={
-            (clsx(styles.checkboxbase, {
-              [styles[`checkbox--color-${colorScheme}`]]: colorScheme,
-              [styles[`checkbox--size-${size}`]]: size,
-            }),
-            className)
-          }
+          className={(clsx(styles.checkboxbase, {}), className)}
           {...props}
         />
         <div
@@ -82,9 +110,14 @@ const Checkbox: React.FC<CheckboxProps> = forwardRef<
             } else {
               setState("unchecked");
             }
-            onClick;
           }}
-          className={styles["checkbox--custom"]}
+          className={clsx(
+            styles["checkbox--custom"],
+            {
+              [styles[`checkbox--size-${size}`]]: size,
+            },
+            checkboxStyle("solid", state)
+          )}
         >
           <CheckIndicator state={state} />
         </div>
@@ -103,7 +136,8 @@ const CheckIndicator: React.FC<{
       <Icon
         nameIcon="GiCheckMark"
         propsIcon={{
-          size: 16,
+          size: "70%",
+          color: "inherit",
         }}
         className={styles.icon}
       />
@@ -115,6 +149,7 @@ const CheckIndicator: React.FC<{
         nameIcon="BiMinus"
         propsIcon={{
           size: 16,
+          color: "inherit",
         }}
         className={styles.icon}
       />
