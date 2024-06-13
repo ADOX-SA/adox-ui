@@ -5,6 +5,8 @@ import styles from "./Dropdown.module.css";
 import { DropdownProps } from "./interfaces";
 import { Icon } from "@/components/atoms/Icon";
 import { DropdownOptions } from "./interfaces";
+import { Text } from "../Text";
+import { css } from "@emotion/css";
 
 const Dropdown = ({
   label,
@@ -13,12 +15,14 @@ const Dropdown = ({
   required,
   dropdownOptions,
   value,
-  sizeLength = "medium",
+  height,
+  width,
+  size = "md",
   name,
   maxOptionsBeforeScroll,
   defaultValue,
   disabled,
-  canSearch,
+  filter,
   ...props
 }: DropdownProps) => {
   const [inputState, setInputState] = useState(false);
@@ -59,7 +63,7 @@ const Dropdown = ({
   };
 
   const blur = () => {
-    if (!canSearch) setInputState(false); // REACT ES UNA MIERDA
+    if (!filter) setInputState(false); // REACT ES UNA MIERDA
     if (!selected) {
       setCompleted(false);
     }
@@ -79,10 +83,16 @@ const Dropdown = ({
 
   return (
     <div
-      className={clsx(styles.dropdownContainer, {
-        [styles[`dropdown-${sizeLength}`]]: sizeLength,
-        [styles[`disabled`]]: disabled,
-      })}
+      className={clsx(
+        styles.dropdownContainer,
+        {
+          [styles[`dropdown-${size}`]]: size,
+          [styles[`disabled`]]: disabled,
+        },
+        css`
+          height: ${height};
+        `
+      )}
       onClick={() =>
         !inputState && !disabled ? setInputState(true) : () => {}
       }
@@ -90,10 +100,10 @@ const Dropdown = ({
       onBlur={blur}
       tabIndex={disabled ? undefined : 0}
     >
-      {label && sizeLength != "wrap" && (
-        <label className={clsx("label-medium")} htmlFor={props.id}>
+      {label && size != "wrap" && (
+        <Text as="label" className={clsx("label-medium")} htmlFor={props.id}>
           {label}
-        </label>
+        </Text>
       )}
       <div
         className={clsx(styles.dropdown, "surface-variant", {
@@ -101,18 +111,23 @@ const Dropdown = ({
         })}
       >
         <div className={clsx(styles.dropdownValue)}>
-          {(canSearch && !inputState) || !canSearch ? (
-            <p
-              className={clsx(styles.dropdownValueParagraph)}
+          {(filter && !inputState) || !filter ? (
+            <Text
+              className={clsx(
+                styles.dropdownValueParagraph,
+                css`
+                  line-height: var(--sys-input-height-${size});
+                `
+              )}
               style={{
-                textAlign: sizeLength != "wrap" ? "left" : "center",
+                textAlign: size != "wrap" ? "left" : "center",
                 opacity: selected ? 1 : 0.5,
               }}
             >
-              {sizeLength != "wrap"
+              {size != "wrap"
                 ? selected?.label ?? placeholder
                 : selected?.label ?? "-"}
-            </p>
+            </Text>
           ) : (
             <input
               className={clsx(styles.searchInput)}
@@ -120,7 +135,7 @@ const Dropdown = ({
               onChange={searchChange}
             />
           )}
-          {sizeLength !== "small" && sizeLength !== "wrap" && (
+          {size !== "sm" && size !== "wrap" && (
             <Icon
               nameIcon={inputState ? "adox-upCaret" : "adox-downCaret"}
               propsIcon={{
@@ -134,19 +149,20 @@ const Dropdown = ({
       {inputState && (
         <div
           className={clsx(styles.dropdownOptionsContainer, {
-            // [styles[`dropdown-${sizeLength}`]]: sizeLength,
+            // [styles[`dropdown-${size}`]]: size,
             [styles[`maxOptions-${maxOptionsBeforeScroll}`]]:
               maxOptionsBeforeScroll,
             [styles[`dropdownOptionsContainerLabel`]]: label,
+            [styles[`dropdown--options-top-${size}`]]: size,
           })}
         >
-          {options.length === 0 && canSearch && (
-            <p className={clsx(styles.dropdownOptionsNoResult, {})}>
+          {options.length === 0 && filter && (
+            <Text className={clsx(styles.dropdownOptionsNoResult, {})}>
               No hay resultados
-            </p>
+            </Text>
           )}
           {options.map((item) => (
-            <p
+            <Text
               key={item.value}
               className={clsx(styles.dropdownOptions, {
                 [styles.optionSelected]: selected?.value === item.value,
@@ -155,11 +171,11 @@ const Dropdown = ({
                 handleChange(item);
               }}
               style={{
-                textAlign: sizeLength !== "wrap" ? "left" : "center",
+                textAlign: size !== "wrap" ? "left" : "center",
               }}
             >
               {item.label}
-            </p>
+            </Text>
           ))}
         </div>
       )}

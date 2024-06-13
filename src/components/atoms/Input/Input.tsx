@@ -1,7 +1,6 @@
 "use client";
 import React, {
   ChangeEvent,
-  ComponentProps,
   ForwardedRef,
   forwardRef,
   InputHTMLAttributes,
@@ -13,16 +12,18 @@ import clsx from "clsx";
 import { Icon } from "../Icon";
 import { Text } from "../Text";
 import { Container } from "@/components/layout/Container";
+import { StandardSize } from "@/types/sizes";
 
-export type InputProps = {
+export interface InputProps
+  extends Omit<InputHTMLAttributes<HTMLInputElement>, "size"> {
   variant?: "outlined" | "filled" | "underlined" | "unstyled";
   rounded?: "none" | "sm" | "md" | "lg" | "xl";
-  s?: "xs" | "sm" | "md" | "lg" | "xl";
-  width?: InputHTMLAttributes<HTMLInputElement>["width"] | "lg" | "xs";
+  size?: StandardSize;
   alert?: boolean;
   customAlert?: string;
   label?: string;
-} & ComponentProps<"input">;
+  nativeSize?: InputHTMLAttributes<HTMLInputElement>["size"];
+}
 const Input: React.FC<InputProps> = forwardRef<HTMLInputElement, InputProps>(
   (props, ref) => {
     const {
@@ -30,8 +31,9 @@ const Input: React.FC<InputProps> = forwardRef<HTMLInputElement, InputProps>(
       rounded,
       alert,
       customAlert,
-      s,
+      size,
       label,
+      nativeSize,
       ...rest
     } = props;
     const containerRef = React.useRef<HTMLDivElement>(null);
@@ -68,8 +70,9 @@ const Input: React.FC<InputProps> = forwardRef<HTMLInputElement, InputProps>(
               id="file-upload"
               ref={inputRef}
               className={clsx(styles.baseinput, {
-                [styles[`input--s-${s}`]]: s,
+                [styles[`input--size-${size}`]]: size,
               })}
+              size={nativeSize}
               {...rest}
             />
           )}
@@ -91,6 +94,7 @@ const Input: React.FC<InputProps> = forwardRef<HTMLInputElement, InputProps>(
 );
 
 const FileInput = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
+  const { size, nativeSize, ...rest } = props;
   const [files, setFiles] = useState<FileList>();
   const inputRef = useRef<ForwardedRef<HTMLInputElement>>(ref);
 
@@ -157,11 +161,12 @@ const FileInput = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
         onBlur={handleBlur}
         onChange={handleChange}
         multiple
+        size={nativeSize}
         ref={inputRef as unknown as ForwardedRef<HTMLInputElement>}
         className={clsx(styles.baseinput, {
-          [styles[`input--s-${props.s}`]]: props.s,
+          [styles[`input--size-${size}`]]: size,
         })}
-        {...props}
+        {...rest}
       />
     </Container>
   );

@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import Dropdown from "./Dropdown";
+import React from "react";
 
 const meta = {
   title: "Dropdown",
@@ -7,8 +8,16 @@ const meta = {
   tags: ["autodocs"],
   parameters: {
     layout: "fullscreen",
+    controls: { expanded: true },
   },
   argTypes: {},
+  decorators: [
+    (Story) => (
+      <div style={{ padding: "10rem" }}>
+        <Story />
+      </div>
+    ),
+  ],
 } satisfies Meta<typeof Dropdown>;
 
 export default meta;
@@ -18,6 +27,7 @@ type Story = StoryObj<typeof Dropdown>;
 export const Default = {
   args: {
     placeholder: "Drop down some options",
+    size: "xs",
     dropdownOptions: [
       { label: "Option 1 its very cool", value: "1" },
       { label: "Option 2 its better", value: "2" },

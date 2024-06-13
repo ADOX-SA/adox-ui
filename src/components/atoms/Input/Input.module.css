@@ -4,8 +4,8 @@
   border: hidden;
   width: 100%;
   background: transparent;
-  padding-left: var(--sys-sizes-4);
-  padding-right: var(--sys-sizes-4);
+  padding-left: var(--sys-size-sizesize-4);
+  padding-right: var(--sys-size-sizesize-4);
 }
 
 .baseinput:focus {
@@ -21,11 +21,11 @@
   position: absolute;
   top: -10px;
   left: 0;
-  padding-left: var(--sys-sizes-4);
-  padding-right: var(--sys-sizes-4);
+  padding-left: var(--sys-size-sizesize-4);
+  padding-right: var(--sys-size-sizesize-4);
   color: var(--color-gray-400);
   transition: all 0.3s ease;
-  font-size: var(--sys-font-size-xs);
+  font-size: var(--sys-size-font-size-xs);
 }
 .input {
   border-color: var(--color-gray-300);
@@ -36,22 +36,23 @@
   border-color: var(--color-red-500);
 }
 
-.alertInput:focus-within {
+.alertInput:focusize-within {
   border-color: var(--color-red-500);
 }
 
 .alertContainer {
   display: flex;
   align-items: center;
-  border-radius: 0 0 var(--sys-border-radius-md) var(--sys-border-radius-md);
+  border-radius: 0 0 var(--sys-border-radiusize-md)
+    var(--sys-border-radiusize-md);
   background-color: var(--color-red-50);
   color: var(--color-red-500);
-  padding: var(--sys-sizes-1) var(--sys-sizes-2);
-  min-height: var(--sys-sizes-2);
+  padding: var(--sys-size-1) var(--sys-size-2);
+  min-height: var(--sys-size-2);
 }
 
 .label {
-  padding-left: var(--sys-sizes-1);
+  padding-left: var(--sys-size-1);
   transition: all 0.3s ease;
 }
 
@@ -61,7 +62,7 @@
   border-style: solid;
 }
 
-.input:focus-within {
+.input:focusize-within {
   border-color: var(--sys-color-primary);
 }
 
@@ -78,7 +79,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: var(--sys-sizes-1) var(--sys-sizes-2);
+  padding: var(--sys-size-1) var(--sys-size-2);
   cursor: pointer;
 }
 
@@ -91,7 +92,7 @@
   cursor: pointer;
 }
 
-.input--variant-filled:focus-within {
+.input--variant-filled:focusize-within {
   border-width: 1px;
   border-style: solid;
 }
@@ -105,47 +106,47 @@
 /* rounded */
 
 .input--rounded-xs {
-  border-radius: var(--sys-border-radius-xs);
+  border-radius: var(--sys-border-radiusize-xs);
 }
 
 .input--rounded-sm {
-  border-radius: var(--sys-border-radius-sm);
+  border-radius: var(--sys-border-radiusize-sm);
 }
 .input--rounded-md {
-  border-radius: var(--sys-border-radius-md);
+  border-radius: var(--sys-border-radiusize-md);
 }
 
 .input--rounded-lg {
-  border-radius: var(--sys-border-radius-lg);
+  border-radius: var(--sys-border-radiusize-lg);
 }
 
 /* sizes */
 
-.input--s-xs {
+.input--size-xs {
   font-size: var(--sys-font-size-xs);
   line-height: var(--sys-input-height-xs);
   height: var(--sys-input-height-xs);
 }
 
-.input--s-sm {
+.input--size-sm {
   font-size: var(--sys-font-size-sm);
   line-height: var(--sys-input-height-sm);
   height: var(--sys-input-height-sm);
 }
 
-.input--s-md {
+.input--size-md {
   font-size: var(--sys-font-size-md);
   line-height: var(--sys-input-height-md);
   height: var(--sys-input-height-md);
 }
 
-.input--s-lg {
+.input--size-lg {
   font-size: var(--sys-font-size-lg);
   line-height: var(--sys-input-height-lg);
   height: var(--sys-input-height-lg);
 }
 
-.input--s-xl {
+.input--size-xl {
   font-size: var(--sys-font-size-xl);
   line-height: var(--sys-input-height-lg);
   height: var(--sys-input-height-xl);
