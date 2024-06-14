@@ -38,8 +38,9 @@ export const Default = {
     alert: true,
     customAlert: "This is a custom alert",
     label: "Nombre de usuario",
-    // placeholder: "Placeholder",
+    placeholder: "Placeholder",
+    size: "auto",
     type: "text",
-    floatLabel: true,
+    width: "max",
   },
 } satisfies Story;

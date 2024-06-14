@@ -22,6 +22,6 @@ export const Default = {
     children: <Text> TEST </Text>,
     variant: "outline",
     colorScheme: "primary",
-    size: "md",
+    size: "auto",
   },
 } satisfies Story;

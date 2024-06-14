@@ -1,4 +1,4 @@
-import { StandardSize } from "@/types/sizes";
+import { Size } from "@/models/sizes";
 import { ChangeEventHandler, InputHTMLAttributes } from "react";
 
 export interface DropdownProps
@@ -10,19 +10,16 @@ export interface DropdownProps
   required?: boolean;
   dropdownOptions: DropdownOptions[];
   // info?: string;
-  size?: StandardSize | "max" | "wrap";
+  size?: Size | "full" | "wrap";
   defaultValue?: string;
   name?: string;
   label?: string;
   maxOptionsBeforeScroll?: DropdownOptionsBeforeScroll;
   disabled?: boolean;
-  height?: StandardSize | InputHTMLAttributes<HTMLSelectElement>["height"];
-  width?:
-    | StandardSize
-    | "wrap"
-    | "max"
-    | InputHTMLAttributes<HTMLSelectElement>["width"];
+  width?: WidthParam | "full" | "wrap";
 }
+
+export type WidthParam = Size | InputHTMLAttributes<HTMLInputElement>["width"];
 
 export type DropdownOptionsBeforeScroll = "5" | "10" | "15";
 

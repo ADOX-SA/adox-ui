@@ -41,7 +41,6 @@
 }
 
 .dropdown-xs {
-  width: 50px;
   font-size: var(--sys-font-size-xs);
   height: var(--sys-input-height-xs);
 }
@@ -51,7 +50,6 @@
 }
 
 .dropdown-sm {
-  width: 100px;
   font-size: var(--sys-font-size-sm);
   height: var(--sys-input-height-sm);
 }
@@ -61,7 +59,6 @@
 }
 
 .dropdown-md {
-  width: 200px;
   font-size: var(--sys-font-size-md);
   height: var(--sys-input-height-md);
 }
@@ -71,7 +68,6 @@
 }
 
 .dropdown-lg {
-  width: 300px;
   font-size: var(--sys-font-size-lg);
   height: var(--sys-input-height-lg);
 }
@@ -81,7 +77,6 @@
 }
 
 .dropdown-xl {
-  width: 400px;
   font-size: var(--sys-font-size-xl);
   height: var(--sys-input-height-xl);
 }
@@ -121,6 +116,8 @@
 }
 
 .dropdownOptionsContainer {
+  min-width: max-content;
+  max-width: var(--sys-input-width-xl);
   display: flex;
   flex-direction: column;
   position: absolute;

@@ -27,7 +27,7 @@ type Story = StoryObj<typeof Dropdown>;
 export const Default = {
   args: {
     placeholder: "Drop down some options",
-    size: "xs",
+    size: "md",
     dropdownOptions: [
       { label: "Option 1 its very cool", value: "1" },
       { label: "Option 2 its better", value: "2" },

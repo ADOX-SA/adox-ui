@@ -29,6 +29,7 @@ const Button: React.FC<ButtonProps> = forwardRef<
       switch (variant) {
         case "solid":
           return css`
+            color: var(--sys-button-color-contrast);
             background-color: var(--sys-color-${colorScheme});
             border: 1px solid transparent;
             &:hover {

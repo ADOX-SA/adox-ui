@@ -3,7 +3,6 @@ import React, {
   ChangeEvent,
   ForwardedRef,
   forwardRef,
-  InputHTMLAttributes,
   useRef,
   useState,
 } from "react";
@@ -12,18 +11,9 @@ import clsx from "clsx";
 import { Icon } from "../Icon";
 import { Text } from "../Text";
 import { Container } from "@/components/layout/Container";
-import { StandardSize } from "@/types/sizes";
+import { input_width } from "./input.styles";
+import { InputProps } from "./interfaces";
 
-export interface InputProps
-  extends Omit<InputHTMLAttributes<HTMLInputElement>, "size"> {
-  variant?: "outlined" | "filled" | "underlined" | "unstyled";
-  rounded?: "none" | "sm" | "md" | "lg" | "xl";
-  size?: StandardSize;
-  alert?: boolean;
-  customAlert?: string;
-  label?: string;
-  nativeSize?: InputHTMLAttributes<HTMLInputElement>["size"];
-}
 const Input: React.FC<InputProps> = forwardRef<HTMLInputElement, InputProps>(
   (props, ref) => {
     const {
@@ -34,6 +24,7 @@ const Input: React.FC<InputProps> = forwardRef<HTMLInputElement, InputProps>(
       size,
       label,
       nativeSize,
+      width = "full",
       ...rest
     } = props;
     const containerRef = React.useRef<HTMLDivElement>(null);
@@ -61,6 +52,7 @@ const Input: React.FC<InputProps> = forwardRef<HTMLInputElement, InputProps>(
           className={clsx(alert ? styles.alertInput : styles.input, {
             [styles[`input--variant-${variant}`]]: variant,
             [styles[`input--rounded-${rounded}`]]: rounded,
+            [input_width(width)]: width,
           })}
         >
           {props.type === "file" ? (

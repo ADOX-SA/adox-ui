@@ -4,8 +4,8 @@
   border: hidden;
   width: 100%;
   background: transparent;
-  padding-left: var(--sys-size-sizesize-4);
-  padding-right: var(--sys-size-sizesize-4);
+  padding-left: var(--sys-sizes-4);
+  padding-right: var(--sys-sizes-4);
 }
 
 .baseinput:focus {
@@ -17,16 +17,6 @@
   color: var(--color-gray-400);
 }
 
-.baseinput::placeholder {
-  position: absolute;
-  top: -10px;
-  left: 0;
-  padding-left: var(--sys-size-sizesize-4);
-  padding-right: var(--sys-size-sizesize-4);
-  color: var(--color-gray-400);
-  transition: all 0.3s ease;
-  font-size: var(--sys-size-font-size-xs);
-}
 .input {
   border-color: var(--color-gray-300);
   transition-duration: 300ms;
@@ -43,16 +33,15 @@
 .alertContainer {
   display: flex;
   align-items: center;
-  border-radius: 0 0 var(--sys-border-radiusize-md)
-    var(--sys-border-radiusize-md);
+  border-radius: 0 0 var(--sys-border-radius-md) var(--sys-border-radius-md);
   background-color: var(--color-red-50);
   color: var(--color-red-500);
-  padding: var(--sys-size-1) var(--sys-size-2);
-  min-height: var(--sys-size-2);
+  padding: var(--sys-sizes-1) var(--sys-sizes-2);
+  min-height: var(--sys-sizes-2);
 }
 
 .label {
-  padding-left: var(--sys-size-1);
+  padding-left: var(--sys-sizes-1);
   transition: all 0.3s ease;
 }
 
@@ -79,7 +68,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: var(--sys-size-1) var(--sys-size-2);
+  padding: var(--sys-sizes-1) var(--sys-sizes-2);
   cursor: pointer;
 }
 
@@ -106,21 +95,26 @@
 /* rounded */
 
 .input--rounded-xs {
-  border-radius: var(--sys-border-radiusize-xs);
+  border-radius: var(--sys-border-radius-xs);
 }
 
 .input--rounded-sm {
-  border-radius: var(--sys-border-radiusize-sm);
+  border-radius: var(--sys-border-radius-sm);
 }
 .input--rounded-md {
-  border-radius: var(--sys-border-radiusize-md);
+  border-radius: var(--sys-border-radius-md);
 }
 
 .input--rounded-lg {
-  border-radius: var(--sys-border-radiusize-lg);
+  border-radius: var(--sys-border-radius-lg);
 }
 
 /* sizes */
+
+.input--size-auto {
+  height: auto;
+  line-height: auto;
+}
 
 .input--size-xs {
   font-size: var(--sys-font-size-xs);

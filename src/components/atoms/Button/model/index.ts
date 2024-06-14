@@ -1,3 +1,4 @@
+import { Size } from "@/models/sizes";
 import { ComponentProps } from "react";
 
 export type ButtonProps = ComponentProps<"button"> & {
@@ -11,17 +12,7 @@ export type ButtonProps = ComponentProps<"button"> & {
 };
 
 export type ButtonVariants = "solid" | "outline" | "ghost" | "link" | "icon";
-export type ButtonSizes =
-  | "3xs"
-  | "2xs"
-  | "xs"
-  | "sm"
-  | "md"
-  | "lg"
-  | "xl"
-  | "2xl"
-  | "3xl"
-  | "full";
+export type ButtonSizes = Size | "2xs" | "2xl" | "full" | "auto";
 export type ButtonColorSchemes =
   | "primary"
   | "secondary"

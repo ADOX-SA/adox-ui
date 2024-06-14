@@ -54,6 +54,16 @@
   --sys-input-height-md: var(--sys-sizes-10);
   --sys-input-height-lg: var(--sys-sizes-12);
   --sys-input-height-xl: var(--sys-sizes-14);
+  --sys-input-height-wrap: auto;
+  --sys-input-height-full: 100%;
+
+  --sys-input-width-xs: 8rem;
+  --sys-input-width-sm: 12rem;
+  --sys-input-width-md: 16rem;
+  --sys-input-width-lg: 20rem;
+  --sys-input-width-xl: 24rem;
+  --sys-input-width-wrap: max-content;
+  --sys-input-width-full: 100%;
 
   --sys-font-family: "Montserrat", sans-serif;
 }

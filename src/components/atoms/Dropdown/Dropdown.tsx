@@ -7,6 +7,7 @@ import { Icon } from "@/components/atoms/Icon";
 import { DropdownOptions } from "./interfaces";
 import { Text } from "../Text";
 import { css } from "@emotion/css";
+import { dropdown_width } from "./dropdown.styles";
 
 const Dropdown = ({
   label,
@@ -15,9 +16,8 @@ const Dropdown = ({
   required,
   dropdownOptions,
   value,
-  height,
-  width,
-  size = "md",
+  width = "full",
+  size,
   name,
   maxOptionsBeforeScroll,
   defaultValue,
@@ -83,16 +83,11 @@ const Dropdown = ({
 
   return (
     <div
-      className={clsx(
-        styles.dropdownContainer,
-        {
-          [styles[`dropdown-${size}`]]: size,
-          [styles[`disabled`]]: disabled,
-        },
-        css`
-          height: ${height};
-        `
-      )}
+      className={clsx(styles.dropdownContainer, {
+        [styles[`dropdown-${size}`]]: size,
+        [styles[`disabled`]]: disabled,
+        [dropdown_width(width)]: width,
+      })}
       onClick={() =>
         !inputState && !disabled ? setInputState(true) : () => {}
       }
@@ -135,7 +130,7 @@ const Dropdown = ({
               onChange={searchChange}
             />
           )}
-          {size !== "sm" && size !== "wrap" && (
+          {size !== "xs" && size !== "wrap" && (
             <Icon
               nameIcon={inputState ? "adox-upCaret" : "adox-downCaret"}
               propsIcon={{
@@ -174,7 +169,7 @@ const Dropdown = ({
                 textAlign: size !== "wrap" ? "left" : "center",
               }}
             >
-              {item.label}
+              {String(item.label)}
             </Text>
           ))}
         </div>

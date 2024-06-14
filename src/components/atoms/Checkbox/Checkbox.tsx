@@ -6,11 +6,11 @@ import { Text } from "../Text";
 import { Icon } from "../Icon";
 import { css } from "@emotion/css";
 import { ColorScheme } from "@/models/Colors";
-import { StandardSize } from "@/types/sizes";
+import { Size } from "@/types/sizes";
 
 export type CheckboxProps = {
   colorScheme?: ColorScheme;
-  size?: StandardSize;
+  size?: Size;
   children?: React.ReactNode;
   className?: string;
   checked?: boolean;
