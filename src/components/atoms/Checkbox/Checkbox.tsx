@@ -6,7 +6,7 @@ import { Text } from "../Text";
 import { Icon } from "../Icon";
 import { css } from "@emotion/css";
 import { ColorScheme } from "@/models/Colors";
-import { Size } from "@/types/sizes";
+import { Size } from "@/models/sizes";
 
 export type CheckboxProps = {
   colorScheme?: ColorScheme;

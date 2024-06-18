@@ -1,0 +1,26 @@
+.badge p {
+  margin: 0;
+  max-lines: 1;
+}
+
+/* xs: 15,
+sm: 25,
+md: 35,
+lg: 45,
+xl: 55,
+'2xl': 65,
+'3xl': 75,
+'4xl': 85,
+'5xl': 95,
+'6xl': 100,
+'7xl': 110,
+'8xl': 120,
+'9xl': 130,
+xxl: 140, */
+
+.size-small {
+  font-size: 18px;
+  line-height: 18px;
+  padding-left: 8px;
+  padding-right: 8px;
+}

@@ -3,7 +3,12 @@ import React, { forwardRef } from "react";
 import styles from "./Text.module.css";
 import { PolymorphicRef } from "@/utils/types";
 import clsx from "clsx";
-import { TextComponent, TextProps } from "./models";
+import {
+  CustomWeigths,
+  customWeigths,
+  TextComponent,
+  TextProps,
+} from "./interfaces";
 import { css } from "@emotion/css";
 
 /**
@@ -31,7 +36,7 @@ export const Text: TextComponent = forwardRef(
       emphasis,
       italic,
       underline,
-      weight,
+      weight = "inherit",
       className,
       colorScheme,
       ...props
@@ -66,17 +71,27 @@ export const Text: TextComponent = forwardRef(
       `;
     };
 
+    const weightStyle = () => {
+      if (customWeigths.includes(weight as CustomWeigths)) {
+        console.log("weight", weight);
+        return styles[`text--weight-${weight}`];
+      }
+      return css`
+        font-weight: ${weight};
+      `;
+    };
+
     return (
       <Component
         ref={ref}
         className={clsx(
           styles.text,
           colors(),
+          weightStyle(),
           {
             [styles[`text--align-${align}`]]: align,
             [styles[`text--size-${size}`]]: size,
             [styles[`text--emphasis-${emphasis}`]]: emphasis,
-            [styles[`text--weight-${weight}`]]: weight,
             [styles[`text--italic`]]: italic,
             [styles["text--underline"]]: underline,
           },

@@ -21,7 +21,7 @@ export const Default = {
     underline: false,
     italic: false,
     as: "h1",
-    weight: "regular",
+    weight: "thin",
     size: "6xl",
     colorScheme: "warning",
   },

@@ -22,11 +22,27 @@ export type TextProps<C extends React.ElementType> =
       emphasis?: "high" | "medium" | "low";
       italic?: true | false;
       underline?: true | false;
-      weight?: "thin" | "light" | "regular" | "medium" | "bold" | "bolder";
+      weight?: CustomWeigths | HTMLParagraphElement["style"]["fontWeight"];
       colorScheme?: ThemeColors;
     }
   >;
 
+export const customWeigths = [
+  "thin",
+  "light",
+  "regular",
+  "medium",
+  "bold",
+  "bolder",
+] as CustomWeigths[]; // Esto es para que se pueda usar en el componente Text y no tener que importar el array de customWeigth
+
+export type CustomWeigths =
+  | "thin"
+  | "light"
+  | "regular"
+  | "medium"
+  | "bold"
+  | "bolder";
 export type TextComponent = <C extends React.ElementType = "span">(
   props: TextProps<C>
 ) => React.ReactNode | React.ReactElement<C> | null; // React.ReactNode no deberia de estar pero sino rompe.

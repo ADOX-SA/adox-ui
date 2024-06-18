@@ -4,7 +4,7 @@ import Container from "../components/layout/Container/Container";
 const meta = {
   title: "Container",
   component: Container,
-  tags: ["autodocs"],
+  tags: ["autodocs", "layout"],
   parameters: {
     layout: "fullscreen",
   },
