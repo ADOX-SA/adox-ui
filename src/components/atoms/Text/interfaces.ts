@@ -6,19 +6,8 @@ export type TextProps<C extends React.ElementType> =
     C,
     {
       align?: "left" | "center" | "right";
-      size?:
-        | "3xs"
-        | "2xs"
-        | "xs"
-        | "sm"
-        | "md"
-        | "lg"
-        | "xl"
-        | "2xl"
-        | "3xl"
-        | "4xl"
-        | "5xl"
-        | "6xl";
+      size?: CustomSizes | HTMLParagraphElement["style"]["fontSize"];
+
       emphasis?: "high" | "medium" | "low";
       italic?: true | false;
       underline?: true | false;
@@ -26,7 +15,20 @@ export type TextProps<C extends React.ElementType> =
       colorScheme?: ThemeColors;
     }
   >;
-
+export const customSizes = [
+  "3xs",
+  "2xs",
+  "xs",
+  "sm",
+  "md",
+  "lg",
+  "xl",
+  "2xl",
+  "3xl",
+  "4xl",
+  "5xl",
+  "6xl",
+] as CustomSizes[];
 export const customWeigths = [
   "thin",
   "light",
@@ -35,6 +37,20 @@ export const customWeigths = [
   "bold",
   "bolder",
 ] as CustomWeigths[]; // Esto es para que se pueda usar en el componente Text y no tener que importar el array de customWeigth
+
+export type CustomSizes =
+  | "3xs"
+  | "2xs"
+  | "xs"
+  | "sm"
+  | "md"
+  | "lg"
+  | "xl"
+  | "2xl"
+  | "3xl"
+  | "4xl"
+  | "5xl"
+  | "6xl";
 
 export type CustomWeigths =
   | "thin"

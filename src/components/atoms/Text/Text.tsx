@@ -4,6 +4,8 @@ import styles from "./Text.module.css";
 import { PolymorphicRef } from "@/utils/types";
 import clsx from "clsx";
 import {
+  customSizes,
+  CustomSizes,
   CustomWeigths,
   customWeigths,
   TextComponent,
@@ -73,11 +75,19 @@ export const Text: TextComponent = forwardRef(
 
     const weightStyle = () => {
       if (customWeigths.includes(weight as CustomWeigths)) {
-        console.log("weight", weight);
         return styles[`text--weight-${weight}`];
       }
       return css`
         font-weight: ${weight};
+      `;
+    };
+
+    const sizeStyle = () => {
+      if (customSizes.includes(size as CustomSizes)) {
+        return styles[`text--size-${size}`];
+      }
+      return css`
+        font-size: ${size};
       `;
     };
 
@@ -88,9 +98,9 @@ export const Text: TextComponent = forwardRef(
           styles.text,
           colors(),
           weightStyle(),
+          sizeStyle(),
           {
             [styles[`text--align-${align}`]]: align,
-            [styles[`text--size-${size}`]]: size,
             [styles[`text--emphasis-${emphasis}`]]: emphasis,
             [styles[`text--italic`]]: italic,
             [styles["text--underline"]]: underline,
