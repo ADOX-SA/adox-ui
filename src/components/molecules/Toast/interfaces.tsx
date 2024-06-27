@@ -4,4 +4,4 @@ export interface ToastProps {
   progress?: number;
 }
 
-export type ToastStatus = "success" | "danger" | "warning" | "info" | "pending";
+export type ToastStatus = "success" | "error" | "warning" | "info" | "pending";

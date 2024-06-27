@@ -4,6 +4,7 @@ import { PolymorphicRef } from "@/utils/types/index";
 import { BoxComponent, BoxProps, FlexProps } from "./models";
 import styles from "./Box.module.css";
 import clsx from "clsx";
+import withBaseProps from "@/components/HOC/withBaseProps";
 
 // quieor hacer un component Box que pueda tomar un as como prop
 
@@ -14,7 +15,7 @@ const Box: BoxComponent = forwardRef(
   ) => {
     //add style as className
     const Component = as || "div";
-    return <Component className={className} {...props} ref={ref} />;
+    return <Component {...props} className={className} ref={ref} />;
   }
 );
 
@@ -35,6 +36,7 @@ export const Flex = forwardRef(
   ) => {
     //add style as className
     const Component = as || "div";
+
     return (
       <Component
         style={{
@@ -47,7 +49,7 @@ export const Flex = forwardRef(
           flexWrap: wrap,
           ...props.style,
         }}
-        className={clsx(styles.flex, className)}
+        className={clsx(className, styles["flex"])}
         {...props}
         ref={ref}
       />
@@ -55,4 +57,4 @@ export const Flex = forwardRef(
   }
 );
 
-export default Box;
+export default withBaseProps(Box);

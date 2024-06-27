@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import Paper from "../components/layout/Paper/Paper";
+import Paper from "@/components/layout/Paper/Paper";
 import React from "react";
 
 const meta = {

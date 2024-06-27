@@ -1,34 +1,42 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import Paper from "../components/layout/Paper/Paper";
-import React from "react";
 import useModal from "@/hooks/useModal";
-import { Button } from "@/components";
+import type { StoryObj, Meta } from "@storybook/react";
+import React from "react";
 
-const meta: Meta<typeof Paper> = {
-  component: Paper,
+const meta: Meta = {
+  title: "useModal",
+  parameters: {
+    actions: { argTypesRegex: "^on[A-Z].*" },
+    controls: { expanded: true },
+  },
+};
+
+export const Default: StoryObj = {
+  render: () => {
+    const { openModal } = useModal();
+    return (
+      <button
+        onClick={() =>
+          openModal(
+            <div>
+              <h1>Modal</h1>
+              <p>Modal content</p>
+              <button
+                onClick={() => {
+                  openModal(<div>otro modal </div>);
+                }}
+              >
+                Close Modal
+              </button>
+            </div>
+          )
+        }
+      >
+        Open Modal
+      </button>
+    );
+  },
+
+  argTypes: {},
 };
 
 export default meta;
-
-type Story = StoryObj<typeof Paper>;
-
-export const Default: Story = () => {
-  const { openModal, closeModal } = useModal();
-
-  return (
-    <Button
-      onClick={() =>
-        openModal(
-          <Paper elevation={3} variant="elevation">
-            <div>
-              <h1>Modal</h1>
-              <button onClick={closeModal}>Close Modal</button>
-            </div>
-          </Paper>
-        )
-      }
-    >
-      Open Modal
-    </Button>
-  );
-};

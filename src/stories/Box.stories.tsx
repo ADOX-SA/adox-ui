@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import Box from "../components/layout/Box/Box";
+import styles from "../components/layout/Box/Box.module.css";
+import React from "react";
 
 const meta = {
   title: "Box",
@@ -13,10 +15,10 @@ const meta = {
 
 export default meta;
 
-type Story = StoryObj<typeof Box>;
-
-export const Default = {
-  args: {
-    // props
-  },
-} satisfies Story;
+export const Default: StoryObj = {
+  render: () => (
+    <Box m="10em" className={styles["flex--gap-56"]}>
+      Box
+    </Box>
+  ),
+};

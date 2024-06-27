@@ -31,7 +31,7 @@ const Paper: PaperComponent = forwardRef(
         )}
         {...props}
       >
-        Paper works!
+        {props.children}
       </Component>
     );
   }

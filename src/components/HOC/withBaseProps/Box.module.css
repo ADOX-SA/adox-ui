@@ -1,0 +1,176 @@
+.box {
+  display: flex;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.flex--flexDirection-row {
+  flex-direction: row;
+}
+
+.flex--flexDirection-column {
+  flex-direction: column;
+}
+
+.flex--justifyContent-start {
+  justify-content: flex-start;
+}
+
+.flex--justifyContent-end {
+  justify-content: flex-end;
+}
+
+.flex--justifyContent-center {
+  justify-content: center;
+}
+
+.flex--justifyContent-spaceBetween {
+  justify-content: space-between;
+}
+
+.flex--justifyContent-spaceAround {
+  justify-content: space-around;
+}
+
+.flex--alignItems-start {
+  align-items: flex-start;
+}
+
+.flex--alignItems-end {
+  align-items: flex-end;
+}
+
+.flex--alignItems-center {
+  align-items: center;
+}
+
+.flex--alignItems-baseline {
+  align-items: baseline;
+}
+
+.flex--alignItems-stretch {
+  align-items: stretch;
+}
+
+.flex--alignContent-start {
+  align-content: flex-start;
+}
+
+.flex--alignContent-end {
+  align-content: flex-end;
+}
+
+.flex--alignContent-center {
+  align-content: center;
+}
+
+.flex--alignContent-spaceBetween {
+  align-content: space-between;
+}
+
+.flex--alignContent-spaceAround {
+  align-content: space-around;
+}
+
+.flex--alignContent-stretch {
+  align-content: stretch;
+}
+
+.flex--flexWrap-nowrap {
+  flex-wrap: nowrap;
+}
+
+.flex--flexWrap-wrap {
+  flex-wrap: wrap;
+}
+
+.flex--flexWrap-wrapReverse {
+  flex-wrap: wrap-reverse;
+}
+
+.flex--flex {
+  flex: 1;
+}
+
+.flex--gap-0 {
+  gap: 0;
+}
+
+.flex--gap-1 {
+  gap: 0.25rem;
+}
+
+.flex--gap-2 {
+  gap: 0.5rem;
+}
+
+.flex--gap-3 {
+  gap: 0.75rem;
+}
+
+.flex--gap-4 {
+  gap: 1rem;
+}
+
+.flex--gap-5 {
+  gap: 1.25rem;
+}
+
+.flex--gap-6 {
+  gap: 1.5rem;
+}
+
+.flex--gap-8 {
+  gap: 2rem;
+}
+
+.flex--gap-10 {
+  gap: 2.5rem;
+}
+
+.flex--gap-12 {
+  gap: 3rem;
+}
+
+.flex--gap-16 {
+  gap: 4rem;
+}
+
+.flex--gap-20 {
+  gap: 5rem;
+}
+
+.flex--gap-24 {
+  gap: 6rem;
+}
+
+.flex--gap-32 {
+  gap: 8rem;
+}
+
+.flex--gap-40 {
+  gap: 10rem;
+}
+
+.flex--gap-48 {
+  gap: 12rem;
+}
+
+.flex--gap-56 {
+  gap: 14rem;
+}
+
+.flex--gap-64 {
+  gap: 16rem;
+}
+
+.flex--gap-px {
+  gap: 1px;
+}
