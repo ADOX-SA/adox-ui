@@ -14,6 +14,7 @@ const Button: React.FC<ButtonProps> = forwardRef<
       children = "",
       variant = "solid",
       size = "3xs",
+      // width = "auto",
       colorScheme = "primary",
       rounded = "md",
       fullWidth = false,

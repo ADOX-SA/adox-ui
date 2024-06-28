@@ -3,7 +3,7 @@ import Input from "@/components/atoms/Input/Input";
 import React from "react";
 
 const meta = {
-  title: "Input",
+  title: "Atoms/Input",
   component: Input,
   tags: ["autodocs"],
   parameters: {

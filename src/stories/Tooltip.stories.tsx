@@ -4,7 +4,7 @@ import React from "react";
 import { Icon } from "@/components/atoms/Icon";
 
 const meta = {
-  title: "Tooltip",
+  title: "Atoms/Tooltip",
   component: Tooltip,
   tags: ["autodocs"],
   parameters: {
@@ -27,7 +27,7 @@ type Story = StoryObj<typeof Tooltip>;
 export const Default = {
   args: {
     label: "Tool tip que ayuda a los usuarios a entender mejor la interfaz",
-    children: <Icon nameIcon="adox-checkmark" />,
+    children: (<Icon nameIcon="adox-checkmark" />) as React.ReactNode,
     transition: "normal",
     position: "top",
   },

@@ -4,7 +4,7 @@ import { Text } from "@/components/atoms/Text";
 import React from "react";
 
 const meta = {
-  title: "Button",
+  title: "Atoms/Button",
   component: Button,
   tags: ["autodocs"],
   parameters: {

@@ -3,7 +3,7 @@ import type { StoryObj, Meta } from "@storybook/react";
 import React from "react";
 
 const meta: Meta = {
-  title: "useModal",
+  title: "Hooks/useModal",
   parameters: {
     actions: { argTypesRegex: "^on[A-Z].*" },
     controls: { expanded: true },

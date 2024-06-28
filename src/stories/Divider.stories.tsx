@@ -3,7 +3,7 @@ import { Divider } from "@/components/atoms/Divider";
 import React from "react";
 
 const meta = {
-  title: "Divider",
+  title: "Atoms/Divider",
   component: Divider,
   tags: ["autodocs"],
   parameters: {

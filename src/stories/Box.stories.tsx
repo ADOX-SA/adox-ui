@@ -4,7 +4,7 @@ import styles from "../components/layout/Box/Box.module.css";
 import React from "react";
 
 const meta = {
-  title: "Box",
+  title: "Layout/Box",
   component: Box,
   tags: ["autodocs"],
   parameters: {

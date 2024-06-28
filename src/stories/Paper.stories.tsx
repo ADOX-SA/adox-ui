@@ -3,7 +3,7 @@ import Paper from "@/components/layout/Paper/Paper";
 import React from "react";
 
 const meta = {
-  title: "Paper",
+  title: "Layout/Paper",
   component: Paper,
   tags: ["autodocs"],
   parameters: {

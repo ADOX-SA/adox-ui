@@ -5,7 +5,7 @@ import type { StoryObj, Meta } from "@storybook/react";
 import React from "react";
 
 const meta: Meta = {
-  title: "useToast",
+  title: "Hooks/useToast",
   parameters: {
     actions: { argTypesRegex: "^on[A-Z].*" },
     controls: { expanded: true },
@@ -18,7 +18,7 @@ export const Default: StoryObj = {
     return (
       <Container display="flex" flexDirection="column">
         <Button
-          size="md"
+          size="sm"
           onClick={() => showToast("This is a success toast", "success")}
         >
           Show success toast

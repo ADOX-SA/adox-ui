@@ -4,6 +4,7 @@ import { ComponentProps } from "react";
 export type ButtonProps = ComponentProps<"button"> & {
   variant?: ButtonVariants;
   size?: ButtonSizes;
+  width?: ButtonSizes;
   colorScheme?: ButtonColorSchemes;
   rounded?: ButtonRounded;
   className?: string;
