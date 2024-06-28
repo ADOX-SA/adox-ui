@@ -1,4 +1,4 @@
-import { Size, size } from "@/types/sizes";
+import { Size, size } from "@/models/sizes";
 import { css } from "@emotion/css";
 import { WidthParam } from "./interfaces";
 
