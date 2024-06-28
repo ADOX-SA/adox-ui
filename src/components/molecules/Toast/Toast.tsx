@@ -7,12 +7,13 @@ import { Icon } from "@/components/atoms/Icon";
 import { ToastProps, ToastStatus } from "./interfaces";
 import { Text } from "@/components/atoms/Text";
 import { Container } from "@/components/layout/Container";
+import { IconName } from "@/components/atoms/Icon/interface";
 
 const mapStatus = (status: ToastStatus) => {
   switch (status) {
     case "success":
       return { name: "adox-checkmark", color: "success" };
-    case "danger":
+    case "error":
       return { name: "adox-error", color: "danger" };
     case "info":
       return { name: "adox-info", color: "info" };
@@ -29,6 +30,8 @@ const mapStatusColor = (status: ToastStatus) => {
       return "secondary";
     case "pending":
       return "success";
+    case "error":
+      return "danger";
     default:
       return status;
   }
@@ -44,7 +47,7 @@ const Toast = ({ message, status, progress = 100 }: ToastProps) => {
         customClassNames={classNames(styles.row)}
       >
         <Icon
-          nameIcon={mapStatus(status).name}
+          nameIcon={mapStatus(status).name as IconName}
           propsIcon={{
             size: 24,
             color: `var(--sys-color-${mapStatus(status).color})`,
