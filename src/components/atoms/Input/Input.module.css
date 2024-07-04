@@ -22,6 +22,14 @@
   transition-duration: 300ms;
 }
 
+.input:active {
+  border-color: var(--color-secondary-500);
+}
+
+.inputFocus {
+  border-color: var(--color-secondary-500);
+}
+
 .alertInput {
   border-color: var(--color-red-500);
 }
@@ -51,13 +59,20 @@
   border-style: solid;
 }
 
-.input:focusize-within {
-  border-color: var(--sys-color-primary);
-}
-
 .input--variant-filled {
   background-color: var(--sys-input-filled-background);
   border: 1px solid transparent;
+}
+
+.input--variant-filled:focusize-within {
+  border-width: 1px;
+  border-style: solid;
+}
+
+.input--variant-underlined {
+  border-width: 0 0 1px 0;
+  border-bottom-style: solid;
+  border-radius: 0 !important;
 }
 
 .baseinput[type="file"] {
@@ -79,17 +94,6 @@
 
 .clickable {
   cursor: pointer;
-}
-
-.input--variant-filled:focusize-within {
-  border-width: 1px;
-  border-style: solid;
-}
-
-.input--variant-underlined {
-  border-width: 0 0 1px 0;
-  border-bottom-style: solid;
-  border-radius: 0 !important;
 }
 
 /* rounded */

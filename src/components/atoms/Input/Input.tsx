@@ -60,6 +60,14 @@ const Input: React.FC<InputProps> = forwardRef<HTMLInputElement, InputProps>(
           ) : (
             <input
               id="file-upload"
+              onFocus={(e) => {
+                containerRef.current?.classList.add(styles.inputFocus);
+                props.onFocus && props.onFocus(e);
+              }}
+              onBlur={(e) => {
+                containerRef.current?.classList.remove(styles.inputFocus);
+                props.onBlur && props.onBlur(e);
+              }}
               ref={inputRef}
               className={clsx(styles.baseinput, {
                 [styles[`input--size-${size}`]]: size,
