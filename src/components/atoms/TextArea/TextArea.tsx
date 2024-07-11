@@ -1,14 +1,27 @@
 "use client";
-import React from "react";
+import React, { forwardRef } from "react";
 import styles from "./TextArea.module.css";
+import { TextAreaProps } from "./interfaces";
+import clsx from "clsx";
 import { css } from "@emotion/css";
 
-export type TextAreaProps = {
-  // types...
-};
-
-const TextArea: React.FC<TextAreaProps> = ({}) => {
-  return <div className={css``}></div>;
-};
+const TextArea: React.FC<TextAreaProps> = forwardRef<
+  HTMLTextAreaElement,
+  TextAreaProps
+>((props, ref) => {
+  const { ...rest } = props;
+  return (
+    <textarea
+      className={clsx(
+        styles.textarea,
+        css`
+          resize: none;
+        `
+      )}
+      ref={ref}
+      {...rest}
+    />
+  );
+});
 
 export default TextArea;
