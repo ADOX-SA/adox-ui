@@ -74,5 +74,16 @@
   --sys-color-divider: var(--color-base-200);
 
   --sys-paper-background: var(--sys-color-surface);
+
   --sys-input-filled-background: var(--sys-color-background);
+
+  --sys-input-border-color: var(--sys-color-base);
+  --sys-input-border-color-focused: var(--sys-color-primary);
+  --sys-input-border-color-disabled: var(--sys-color-base-light);
+  --sys-input-border-color-error: var(--sys-color-danger);
+
+  --sys-textarea-border-color: var(--sys-input-border-color);
+  --sys-textarea-border-color-focused: var(--sys-input-border-color-focused);
+  --sys-textarea-border-color-disabled: var(--sys-input-border-color-disabled);
+  --sys-textarea-border-color-error: var(--sys-input-border-color-error);
 }
