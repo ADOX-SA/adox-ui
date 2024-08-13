@@ -6,6 +6,7 @@ import { css } from "@emotion/css";
 import { IconName } from "@/components/atoms/Icon/interface";
 import { Icon } from "../Icon";
 import { Size } from "@/models/sizes";
+import { Text } from "../Text";
 
 export type ProgressBarProps = {
   totalLength: number;
@@ -31,20 +32,22 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
           css`
             background-color: ${color};
             position: relative;
-          `
+          `,
+          [styles["progress-animation"]]
         )}
         style={{ width: `${(currentLength / totalLength) * 100}%` }}
       >
         {showPercentage && (
-          <div className={styles.progressText}>
+          <Text className={styles.progressText}>
             {Math.round((currentLength / totalLength) * 100)}%
-          </div>
+          </Text>
         )}
         {dot && (
           <div className={styles.dot}>
             <Icon
               nameIcon={dot}
-              height={16}
+              height={"100%"}
+              width={"auto"}
               color="var(--sys-color-background)"
             />
           </div>
