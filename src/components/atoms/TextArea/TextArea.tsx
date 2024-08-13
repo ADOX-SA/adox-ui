@@ -4,8 +4,8 @@ import styles from "./TextArea.module.css";
 import { TextAreaProps } from "./interfaces";
 import clsx from "clsx";
 import { css } from "@emotion/css";
-import { Icon } from "../Icon";
 import Text from "../Text/Text";
+import { AlertContainer } from "../AlertContainer";
 
 const TextArea: React.FC<TextAreaProps> = forwardRef<
   HTMLTextAreaElement,
@@ -53,14 +53,18 @@ const TextArea: React.FC<TextAreaProps> = forwardRef<
     <textarea
       className={clsx(
         styles.textarea,
-        [styles[`textarea--size-${props.size}`]],
-        variantStyle(props.variant),
-
+        styles[`textarea--size-${props.size}`],
+        {
+          [styles[`alertInput`]]: props.alert,
+        },
         css`
           resize: none;
           border-radius: var(--sys-border-radius-${props.rounded});
           width: ${props.width === "full" ? "100%" : props.width};
+          border: 1px solid var(--sys-textarea-border-color);
         `,
+        variantStyle(props.variant),
+
         props.className
       )}
       disabled={props.disabled}
@@ -72,9 +76,17 @@ const TextArea: React.FC<TextAreaProps> = forwardRef<
   if (props.label) {
     textAreaComponent = (
       <div className={styles.textareaContainer}>
-        <Text as="label" htmlFor={props.id} className={styles.label}>
+        <Text
+          as="label"
+          htmlFor={props.id}
+          size="xs"
+          weight="medium"
+          colorScheme="gray"
+          className={styles.label}
+        >
           {props.label}
         </Text>
+
         {textAreaComponent}
       </div>
     );
@@ -85,15 +97,7 @@ const TextArea: React.FC<TextAreaProps> = forwardRef<
       <div>
         {textAreaComponent}
         {!!props.customAlert && (
-          <div className={clsx(styles.alertContainer)}>
-            <Icon
-              nameIcon="BiSolidError"
-              propsIcon={{ size: "14px", color: "var(--color-red-500)" }}
-            />
-            <Text size="sm" weight="medium" className={styles.alertText}>
-              {props.customAlert}
-            </Text>
-          </div>
+          <AlertContainer> {props.customAlert}</AlertContainer>
         )}
       </div>
     );

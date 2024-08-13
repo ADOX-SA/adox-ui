@@ -13,6 +13,7 @@ import { Text } from "../Text";
 import { Container } from "@/components/layout/Container";
 import { input_width } from "./input.styles";
 import { InputProps } from "./interfaces";
+import { AlertContainer } from "../AlertContainer";
 
 const Input: React.FC<InputProps> = forwardRef<HTMLInputElement, InputProps>(
   (props, ref) => {
@@ -77,17 +78,7 @@ const Input: React.FC<InputProps> = forwardRef<HTMLInputElement, InputProps>(
             />
           )}
         </div>
-        {alert ? (
-          <div className={clsx(styles.alertContainer)}>
-            <Icon
-              nameIcon="BiSolidError"
-              propsIcon={{ size: "14px", color: "var(--color-red-500)" }}
-            />
-            <Text size="sm" weight="medium" className={styles.alertText}>
-              {customAlert}
-            </Text>
-          </div>
-        ) : null}
+        {customAlert ? <AlertContainer> {customAlert}</AlertContainer> : null}
       </div>
     );
   }

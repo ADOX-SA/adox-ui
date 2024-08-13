@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import TextArea from "./TextArea";
+import TextArea from "../components/atoms/TextArea/TextArea";
 import React from "react";
 
 const meta = {
-  title: "TextArea",
+  title: "Atoms/TextArea",
   component: TextArea,
   tags: ["autodocs"],
   parameters: {
@@ -35,5 +35,8 @@ type Story = StoryObj<typeof TextArea>;
 export const Default = {
   args: {
     size: "xl",
+    placeholder: "Type here...",
+    disabled: false,
+    label: "Description",
   },
 } satisfies Story;

@@ -1,0 +1,13 @@
+.alertContainer {
+  display: flex;
+  align-items: center;
+  border-radius: 0 0 var(--sys-border-radius-md) var(--sys-border-radius-md);
+  background-color: var(--color-red-50);
+  color: var(--color-red-500);
+  padding: var(--sys-sizes-1) var(--sys-sizes-2);
+  min-height: var(--sys-sizes-2);
+}
+
+.alertText {
+  margin-left: var(--sys-sizes-1);
+}

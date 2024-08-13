@@ -15,6 +15,7 @@
 .baseinput:disabled {
   background-color: var(--color-gray-100);
   color: var(--color-gray-400);
+  cursor: not-allowed;
 }
 
 .input {

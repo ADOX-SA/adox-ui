@@ -86,4 +86,6 @@
   --sys-textarea-border-color-focused: var(--sys-input-border-color-focused);
   --sys-textarea-border-color-disabled: var(--sys-input-border-color-disabled);
   --sys-textarea-border-color-error: var(--sys-input-border-color-error);
+
+  --sys-skeleton-color: var(--color-gray-200);
 }
