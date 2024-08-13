@@ -27,8 +27,6 @@ export type Lib =
   | "vsc"
   | "wi";
 
-export interface TypesPropsIcon {
+export interface TypesPropsIcon extends IconBaseProps {
   nameIcon: IconName;
-  propsIcon?: IconBaseProps;
-  className?: string;
 }

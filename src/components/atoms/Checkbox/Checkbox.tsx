@@ -135,10 +135,8 @@ const CheckIndicator: React.FC<{
     return (
       <Icon
         nameIcon="GiCheckMark"
-        propsIcon={{
-          size: "70%",
-          color: "inherit",
-        }}
+        size={"70%"}
+        color="inherit"
         className={styles.icon}
       />
     );
@@ -147,10 +145,8 @@ const CheckIndicator: React.FC<{
     return (
       <Icon
         nameIcon="BiMinus"
-        propsIcon={{
-          size: 16,
-          color: "inherit",
-        }}
+        size={16}
+        color="inherit"
         className={styles.icon}
       />
     );

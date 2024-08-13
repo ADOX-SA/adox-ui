@@ -133,9 +133,7 @@ const Dropdown = ({
           {size !== "xs" && size !== "wrap" && (
             <Icon
               nameIcon={inputState ? "adox-upCaret" : "adox-downCaret"}
-              propsIcon={{
-                size: 16,
-              }}
+              size={16}
               className={clsx(styles.icon)}
             />
           )}

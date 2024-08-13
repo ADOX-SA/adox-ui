@@ -12,10 +12,7 @@ export type AlertContainerProps = {
 const AlertContainer: React.FC<AlertContainerProps> = ({ children }) => {
   return (
     <div className={clsx(styles.alertContainer)}>
-      <Icon
-        nameIcon="BiSolidError"
-        propsIcon={{ size: "14px", color: "var(--color-red-500)" }}
-      />
+      <Icon nameIcon="BiSolidError" color="var(--color-red-500)" size="24px" />
       <Text size="sm" weight="medium" className={styles.alertText}>
         {children}
       </Text>

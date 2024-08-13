@@ -48,10 +48,8 @@ const Toast = ({ message, status, progress = 100 }: ToastProps) => {
       >
         <Icon
           nameIcon={mapStatus(status).name as IconName}
-          propsIcon={{
-            size: 24,
-            color: `var(--sys-color-${mapStatus(status).color})`,
-          }}
+          size={24}
+          color={`var(--sys-color-${mapStatus(status).color})`}
           className={classNames(styles.icon, {
             [styles["SPINBOY"]]: status === "pending",
           })}

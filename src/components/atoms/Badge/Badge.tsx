@@ -88,10 +88,8 @@ const Badge: React.FC<BadgeProps> = ({
     >
       <Icon
         nameIcon={icon}
-        propsIcon={{
-          size: iconSize(size),
-          style: { marginRight: "0.2rem" },
-        }}
+        size={iconSize(size)}
+        style={{ marginRight: "0.2rem" }}
       />
       <Text>{label}</Text>
     </div>

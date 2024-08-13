@@ -125,7 +125,8 @@ const FileInput = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
         Seleccionar Archivo{" "}
         <Icon
           nameIcon="BiSolidCloudUpload"
-          propsIcon={{ size: "24px", color: "var(--color-gray-500)" }}
+          size={24}
+          color="var(--color-gray-500)"
         />
       </Text>
 
@@ -140,10 +141,8 @@ const FileInput = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
         <div onClick={() => removeFiles()} className={styles.clickable}>
           <Icon
             nameIcon="BiSolidXSquare"
-            propsIcon={{
-              size: "18px",
-              color: "var(--color-red-700)",
-            }}
+            size="18px"
+            color="var(--color-red-700)"
           />
         </div>
       ) : null}

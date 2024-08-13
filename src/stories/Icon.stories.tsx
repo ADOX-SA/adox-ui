@@ -18,19 +18,19 @@ type Story = StoryObj<typeof Icon>;
 export const Default = {
   args: {
     nameIcon: "adox-loading",
-    propsIcon: {
-      size: 24,
-      color: "red",
-    },
+    size: "400px",
+    width: "500px",
+
+    color: "red",
   },
 } satisfies Story;
 
 export const AIIcon = {
   args: {
     nameIcon: "AiFillAlert",
-    propsIcon: {
-      size: 24,
-      color: "blue",
-    },
+    color: "blue",
+    height: "400px",
+    width: "500px",
+    id: "ICONO",
   },
 } satisfies Story;
