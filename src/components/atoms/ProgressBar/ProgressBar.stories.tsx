@@ -17,6 +17,8 @@ type Story = StoryObj<typeof ProgressBar>;
 
 export const Default = {
   args: {
-    dot: "FaCircle",
+    // dot: "FaCircle",
+    value: 50,
+    showPercentage: true,
   },
 } satisfies Story;
