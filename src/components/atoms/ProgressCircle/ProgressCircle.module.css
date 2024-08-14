@@ -1,0 +1,31 @@
+.progresscircle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border-radius: 50%;
+  background-color: #f3f3f3;
+}
+
+.progresscircle__circle {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  clip: rect(0, 100px, 100px, 50px);
+}
+
+.content {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.label {
+  width: 70%;
+  height: 80%;
+  overflow: hidden;
+  text-wrap: wrap;
+  text-overflow: ellipsis;
+}
