@@ -46,7 +46,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
   showPercentage,
   color = "var(--color-primary-500)",
   size = "md",
-  rounded = "md",
+  rounded = "sm",
   dot,
 }) => {
   return (

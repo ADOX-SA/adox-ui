@@ -3,6 +3,7 @@
   --sys-zindex-header: 100;
   --sys-zindex-sidenav: 200;
   --sys-zindex-backdrop: 300;
+  --sys-zindex-drawer: 301;
   --sys-zindex-modal: 400;
   --sys-zindex-toast: 500;
   --sys-zindex-tooltip: 600;

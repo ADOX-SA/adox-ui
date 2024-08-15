@@ -1,0 +1,62 @@
+:root {
+  --sys-drawer-xs: 20rem;
+  --sys-drawer-sm: 24rem;
+  --sys-drawer-md: 28rem;
+  --sys-drawer-lg: 32rem;
+  --sys-drawer-xl: 46rem;
+  --sys-drawer-full: 100%;
+
+  --sys-drawer-width: var(--sys-drawer-xs);
+}
+
+.drawer {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+}
+
+.drawerContent {
+  background-color: var(--sys-color-background);
+  display: block;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  z-index: var(--sys-zindex-drawer);
+  padding: 0px;
+}
+
+.drawerContentOpen {
+  max-width: 100vw;
+  width: var(--sys-drawer-width);
+  animation: slide-in 0.2s ease-in-out;
+}
+
+.isFullHeight {
+  height: 100%;
+}
+
+@keyframes slide-in {
+  0% {
+    /* quiero el negativo de var(--sys-drawer-width) */
+    transform: translateX(-100%);
+    box-shadow: none;
+  }
+  100% {
+    transform: translateX(0px);
+    box-shadow: -1px 18px 200px 45px rgba(0, 0, 0, 0.43);
+  }
+}
+/* OVERLAY */
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: var(--sys-zindex-backdrop);
+}
+
+.overlayOpen {
+}

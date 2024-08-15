@@ -8,7 +8,37 @@ const meta = {
   parameters: {
     layout: "fullscreen",
   },
-  argTypes: {},
+  argTypes: {
+    value: {
+      control: {
+        type: "range",
+        min: 0,
+        max: 100,
+        step: 1,
+      },
+    },
+    color: {
+      control: "color",
+    },
+    size: {
+      control: {
+        type: "select",
+        options: ["xs", "sm", "md", "lg"],
+      },
+    },
+    rounded: {
+      control: {
+        type: "select",
+        options: ["none", "xs", "sm", "md", "lg", "xl"],
+      },
+    },
+    dot: {
+      control: {
+        type: "select",
+        options: ["FaCircle", "FaCheck", "FaTimes"],
+      },
+    },
+  },
 } satisfies Meta<typeof ProgressBar>;
 
 export default meta;
