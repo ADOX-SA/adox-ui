@@ -59,8 +59,17 @@
 
   --sys-color-surface: var(--color-base-50);
   --sys-color-on-surface: var(--color-base-900);
+  --sys-color-surface-variant: var(--color-base-200);
+  --sys-color-on-surface-variant: var(--color-base-900);
+
+  --sys-color-outline: var(--color-base-200);
+  --sys-color-on-outline: var(--color-base-900);
+
+  --sys-color-outline-variant: var(--color-base-100);
+  --sys-color-on-outline-variant: var(--color-base-900);
 
   --sys-color-background: var(--color-base-100);
+  --sys-color-on-background: var(--color-base-900);
 
   --sys-text-color: var(--color-base-900);
   --sys-text-color-secondary: var(--color-base-600);

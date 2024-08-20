@@ -1,0 +1,72 @@
+.container {
+  overflow: auto;
+}
+
+/* Chrome, Edge, and Safari */
+.container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.container::-webkit-scrollbar-track {
+  background: var(--sys-color-background);
+}
+
+.container::-webkit-scrollbar-thumb {
+  background-color: var(--sys-color-outline-variant);
+  border-radius: 10px;
+  border: 2px solid var(--sys-color-background);
+}
+
+.th {
+  padding: 8px 8px;
+  font-size: 14px;
+  border-bottom: 1px solid var(--sys-color-outline-variant);
+}
+.thInside {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  user-select: none;
+}
+.td {
+  padding: 4px 8px;
+  font-size: 14px;
+  border-bottom: 1px solid var(--sys-color-outline-variant);
+}
+
+.tr.clickeable:hover {
+  background-color: var(--sys-color-surface-variant);
+  color: var(--sys-color-on-surface-variant);
+}
+
+.table {
+  border: none;
+  border-spacing: 0px;
+}
+
+.last {
+  border-bottom: none;
+}
+
+.first {
+  border-left: none;
+}
+
+.clickeable:hover {
+  cursor: pointer;
+  color: var(--sys-color-primary);
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.thIcon {
+  margin-left: 4px;
+}
+/* .thIcon path {
+  fill: var(--md-sys-color-on-primary);
+} */
+.clickeable:hover .thIcon path {
+  fill: var(--sys-color-primary);
+}

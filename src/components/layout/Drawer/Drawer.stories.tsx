@@ -19,6 +19,7 @@ type Story = StoryObj<typeof Drawer>;
 export const Default = {
   args: {
     children: "Drawer Content",
+    isOpen: true
   },
   render: (args: any) => {
     return <Drawer {...args} />;
