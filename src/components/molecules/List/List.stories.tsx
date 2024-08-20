@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import List from "./List";
 import React from "react";
 import { ListSortState } from "./interfaces";
+import { css } from "@emotion/css";
 
 const meta = {
   title: "List",
@@ -23,15 +24,23 @@ export const Default = {
       undefined
     );
     return (
-      <List
-        headers={args.headers}
-        rows={args.rows}
-        sortState={sort}
-        onSort={(v) => {
-          console.log(v);
-          setSort(v);
-        }}
-      />
+      <div
+        className={css`
+          width: 100vw;
+          height: 20vh;
+        `}
+      >
+        <List
+          headers={args.headers}
+          rows={args.rows}
+          sortState={sort}
+          onSort={(v) => {
+            console.log(v);
+            setSort(v);
+          }}
+          size={args.size}
+        />
+      </div>
     );
   },
   args: {

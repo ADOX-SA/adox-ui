@@ -6,7 +6,7 @@ import { Icon } from "@/components/atoms/Icon";
 import { Text } from "@/components/atoms";
 
 export default function List({
-  size = "sm",
+  size = "lg",
   headers = [],
   rows = [],
   fullWidth,
@@ -104,6 +104,7 @@ export default function List({
                       key={i}
                       className={clsx(styles.td, {
                         [styles["last"]]: ir === rows.length - 1,
+                        [styles[`padding-${size}`]]: size,
                       })}
                       align={headers[i] ? headers[i].columnAlign : undefined}
                       width={headers[i] ? headers[i].width : undefined}

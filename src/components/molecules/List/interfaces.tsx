@@ -1,5 +1,7 @@
+import { Size } from "@/models/sizes";
+
 export interface ListProps {
-  size?: "xs" | "sm" | "md" | "lg";
+  size?: Size | "2xs";
   headers?: ListHeader[];
   rows: ListRow[];
   fullWidth?: boolean;

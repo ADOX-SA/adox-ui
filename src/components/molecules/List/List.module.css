@@ -18,8 +18,7 @@
 }
 
 .th {
-  padding: 8px 8px;
-  font-size: 14px;
+  padding: 4px 8px;
   border-bottom: 1px solid var(--sys-color-outline-variant);
 }
 .thInside {
@@ -69,4 +68,24 @@
 } */
 .clickeable:hover .thIcon path {
   fill: var(--sys-color-primary);
+}
+
+.padding-2xs {
+  padding: 2px 8px;
+}
+
+.padding-xs {
+  padding: 4px 8px;
+}
+
+.padding-sm {
+  padding: 4px 8px;
+}
+
+.padding-md {
+  padding: 8px;
+}
+
+.padding-lg {
+  padding: 8px;
 }
