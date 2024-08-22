@@ -10,6 +10,11 @@ import { Variants } from "@/models/Variants";
 import { css } from "@emotion/css";
 import { Size } from "@/models/sizes";
 
+/**
+ * FIXME:
+ * - ESTO ES UN CHIP NO UN BADGE, EL BADGE ES EL COSITO QUE VA AL BORDE DEL ICONO QUE MUESTRA LA CANTIDAD DE NOTIFICACIONES
+ *  */
+
 const Badge: React.FC<BadgeProps> = ({
   variant = "solid",
   label,

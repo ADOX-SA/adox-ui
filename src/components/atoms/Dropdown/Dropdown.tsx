@@ -1,210 +1,89 @@
-import React, { ChangeEvent, createRef, useState } from "react";
-import clsx from "clsx";
-
+"use client";
+import React, { forwardRef, useCallback, useEffect, useRef } from "react";
 import styles from "./Dropdown.module.css";
-import { DropdownProps } from "./interfaces";
-import { Icon } from "@/components/atoms/Icon";
-import { DropdownOptions } from "./interfaces";
-import { Text } from "../Text";
+import clsx from "clsx";
+import useOutsideClick from "@/hooks/useOutsideClick";
 import { css } from "@emotion/css";
-import { dropdown_width } from "./dropdown.styles";
 
-const Dropdown = ({
-  label,
-  placeholder,
-  onChange = () => {},
-  required,
-  dropdownOptions,
-  value,
-  width = "full",
-  size,
-  name,
-  maxOptionsBeforeScroll,
-  defaultValue,
-  disabled,
-  filter,
-  ...props
-}: DropdownProps) => {
-  const [inputState, setInputState] = useState(false);
-  const [completed, setCompleted] = useState(true);
-  const ref = createRef<HTMLSelectElement>();
+export type DropdownProps = {
+  dropdownContent: React.ReactNode;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  open: boolean;
+  position: "top" | "right" | "bottom" | "left";
+} & React.HTMLAttributes<HTMLDivElement>;
 
-  const [options, setOptions] = useState(dropdownOptions);
-  const [selected, setSelected] = useState<undefined | DropdownOptions>(
-    options.find((item) => item.value === value) ??
-      options.find((item) => item.value === defaultValue)
-  );
+const Dropdown: React.FC<DropdownProps> = forwardRef<
+  HTMLDivElement,
+  DropdownProps
+>(({ children, dropdownContent, open, setOpen }) => {
+  const childRef = useRef<HTMLDivElement>(null);
+  const mainDivRef = React.useRef<HTMLDivElement>(null);
+  const dropdownContentRef = useRef<HTMLDivElement>(null);
 
-  /* FUNCIONES PARA EL MANEJO DE ESTADOS */
+  const ww = window.innerWidth;
 
-  const searchFocus = (input: HTMLInputElement | null) => {
-    if (input) {
-      input.focus();
+  const adjustPosition = useCallback(() => {
+    if (dropdownContentRef.current) {
+      const {
+        width: dw,
+        height: dh,
+        left: dl,
+        top: dt,
+        right: dr,
+        bottom: db,
+        x: dx,
+        y: dy,
+      } = dropdownContentRef.current.getBoundingClientRect();
+      const isScreenCuttingTheDropdownContent = dx + dw > ww;
+      const isDropdownContentBiggerThanWindow = dw > ww;
+      const childBoundingRect = childRef.current?.getBoundingClientRect();
+      if (childBoundingRect) {
+        if (isScreenCuttingTheDropdownContent) {
+          if (isDropdownContentBiggerThanWindow) {
+            dropdownContentRef.current.style.left = `-${dx}px`;
+            dropdownContentRef.current.style.width = `${ww}px`;
+            dropdownContentRef.current.style.overflowX = "auto";
+          } else {
+            dropdownContentRef.current.style.left = `${
+              (dx - (dx - (dw + dx - ww))) * -1
+            }px`;
+          }
+        }
+      }
     }
-  };
-
-  const searchChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.value !== "") {
-      setOptions(
-        options.filter(({ label }) => {
-          return label.toLowerCase().includes(e.target.value.toLowerCase());
-        })
-      );
-    } else {
-      setOptions(dropdownOptions);
+  }, [ww]);
+  // stay the dropdownContent inside the window
+  useEffect(() => {
+    if (open) {
+      adjustPosition();
     }
-  };
+  }, [adjustPosition, open, ww]);
 
-  const focus = () => {
-    setInputState(true);
-    if (!selected) {
-      setCompleted(false);
-    }
-  };
-
-  const blur = () => {
-    if (!filter) setInputState(false); // REACT ES UNA MIERDA
-    if (!selected) {
-      setCompleted(false);
-    }
-  };
-
-  const handleChange = (opc: DropdownOptions) => {
-    setInputState(false);
-    setCompleted(true);
-    setSelected(opc);
-    //trigger onchange from select tag
-    if (ref.current) {
-      ref.current.value = opc.value;
-    }
-    const event = new Event("change", { bubbles: true });
-    ref.current?.dispatchEvent(event);
-  };
+  useOutsideClick({
+    ref: mainDivRef,
+    handler: () => {
+      setOpen(false);
+    },
+  });
 
   return (
-    <div
-      className={clsx(styles.dropdownContainer, {
-        [styles[`dropdown-${size}`]]: size,
-        [styles[`disabled`]]: disabled,
-        [dropdown_width(width)]: width,
-      })}
-      onClick={() =>
-        !inputState && !disabled ? setInputState(true) : () => {}
-      }
-      onFocus={focus}
-      onBlur={blur}
-      tabIndex={disabled ? undefined : 0}
-    >
-      {label && size != "wrap" && (
-        <Text as="label" className={clsx("label-medium")} htmlFor={props.id}>
-          {label}
-        </Text>
-      )}
-      <div
-        className={clsx(styles.dropdown, "surface-variant", {
-          [styles.dropdownActive]: inputState,
-        })}
-      >
-        <div className={clsx(styles.dropdownValue)}>
-          {(filter && !inputState) || !filter ? (
-            <Text
-              className={clsx(
-                styles.dropdownValueParagraph,
-                css`
-                  line-height: var(--sys-input-height-${size});
-                `
-              )}
-              style={{
-                textAlign: size != "wrap" ? "left" : "center",
-                opacity: selected ? 1 : 0.5,
-              }}
-            >
-              {size != "wrap"
-                ? selected?.label ?? placeholder
-                : selected?.label ?? "-"}
-            </Text>
-          ) : (
-            <input
-              className={clsx(styles.searchInput)}
-              ref={searchFocus}
-              onChange={searchChange}
-            />
-          )}
-          {size !== "xs" && size !== "wrap" && (
-            <Icon
-              nameIcon={inputState ? "adox-upCaret" : "adox-downCaret"}
-              size={16}
-              className={clsx(styles.icon)}
-            />
-          )}
-        </div>
-      </div>
-      {inputState && (
+    <div className={clsx(styles.dropdown)} ref={mainDivRef}>
+      <div ref={childRef}>{children}</div>
+      {open && (
         <div
-          className={clsx(styles.dropdownOptionsContainer, {
-            // [styles[`dropdown-${size}`]]: size,
-            [styles[`maxOptions-${maxOptionsBeforeScroll}`]]:
-              maxOptionsBeforeScroll,
-            [styles[`dropdownOptionsContainerLabel`]]: label,
-            [styles[`dropdown--options-top-${size}`]]: size,
-          })}
+          ref={dropdownContentRef}
+          className={css`
+            position: absolute;
+            z-index: 1000;
+            top: 100%;
+            left: 0;
+          `}
         >
-          {options.length === 0 && filter && (
-            <Text className={clsx(styles.dropdownOptionsNoResult, {})}>
-              No hay resultados
-            </Text>
-          )}
-          {options.map((item) => (
-            <Text
-              key={item.value}
-              className={clsx(styles.dropdownOptions, {
-                [styles.optionSelected]: selected?.value === item.value,
-              })}
-              onClick={() => {
-                handleChange(item);
-              }}
-              style={{
-                textAlign: size !== "wrap" ? "left" : "center",
-              }}
-            >
-              {String(item.label)}
-            </Text>
-          ))}
+          {dropdownContent}
         </div>
       )}
-      {required && (
-        <div
-          className={clsx(styles.errorContainer, {
-            [styles["showError"]]: !inputState && !completed,
-          })}
-        >
-          <p className={clsx("label-large", styles.errorDisplay)}>
-            {"Debe seleccionar un valor"}
-          </p>
-        </div>
-      )}
-      <select
-        value={value}
-        onChange={(e) => {
-          onChange ? onChange(e) : () => {};
-        }}
-        ref={ref}
-        name={name}
-        required={required}
-        hidden
-        {...props}
-      >
-        <option value="" disabled>
-          {placeholder}
-        </option>
-
-        {options.map((item) => (
-          <option key={item.value} value={item.value}>
-            {item.label}
-          </option>
-        ))}
-      </select>
     </div>
   );
-};
+});
+
 export default Dropdown;

@@ -41,6 +41,7 @@
 .table {
   border: none;
   border-spacing: 0px;
+  overflow: auto;
 }
 
 .last {

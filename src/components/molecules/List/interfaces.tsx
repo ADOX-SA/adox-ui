@@ -8,6 +8,9 @@ export interface ListProps {
   customClassNames?: string;
   onSort?: (state: ListSortState) => void;
   sortState?: ListSortState;
+  width?: string;
+  height?: string;
+  className?: string;
 }
 
 export type ListHeader = {

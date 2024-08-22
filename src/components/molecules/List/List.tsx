@@ -4,13 +4,15 @@ import styles from "./List.module.css";
 import { ListHeader, ListProps, ListSortState } from "./interfaces";
 import { Icon } from "@/components/atoms/Icon";
 import { Text } from "@/components/atoms";
+import { css } from "@emotion/css";
 
 export default function List({
-  size = "lg",
+  size = "xs",
   headers = [],
   rows = [],
-  fullWidth,
-  customClassNames,
+  width = "auto",
+  height = "auto",
+  className,
   onSort,
   sortState,
 }: ListProps) {
@@ -33,12 +35,12 @@ export default function List({
       {rows.length > 0 && (
         <table
           className={clsx(
-            "ads-table",
-            {
-              [styles["fullWidth"]]: fullWidth,
-              [`${customClassNames}`]: customClassNames,
-            },
-            styles.table
+            css`
+              width: ${width};
+              height: ${height};
+            `,
+            styles.table,
+            className
           )}
         >
           <thead>

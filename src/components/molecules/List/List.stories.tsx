@@ -5,7 +5,7 @@ import { ListSortState } from "./interfaces";
 import { css } from "@emotion/css";
 
 const meta = {
-  title: "List",
+  title: "Molecules/List",
   component: List,
   tags: ["autodocs"],
   parameters: {
