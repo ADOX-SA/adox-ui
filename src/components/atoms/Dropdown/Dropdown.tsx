@@ -12,6 +12,17 @@ export type DropdownProps = {
   position: "top" | "right" | "bottom" | "left";
 } & React.HTMLAttributes<HTMLDivElement>;
 
+/**
+ * Dropdown component
+ * COSAS A TENER EN CUENTA:
+ *  - El dropdown esta pensado para ser usado con un solo hijo
+ *  - Deberia de ser este componente el que se ubique dependiendo del width de la pantalla o el mediaquery deberia hacer eso?
+ * TODO:
+ * - [ ] Add position prop
+ * - [ ] Add animation
+ *
+ */
+
 const Dropdown: React.FC<DropdownProps> = forwardRef<
   HTMLDivElement,
   DropdownProps
