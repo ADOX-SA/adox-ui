@@ -77,24 +77,32 @@ const Dropdown: React.FC<DropdownProps> = forwardRef<
     },
   });
 
+  // Para la pantalla de escritorio desplegar desde la posicin del hijo hacia abajo
+  // Para la pantalla de movil desplegar desde el borde inferior de la pantalla hacia arriba
+
   return (
     <div className={clsx(styles.dropdown)} ref={mainDivRef}>
       <div ref={childRef}>{children}</div>
-      {open && (
-        <div
-          ref={dropdownContentRef}
-          className={css`
-            position: absolute;
-            z-index: 1000;
-            top: 100%;
-            left: 0;
-          `}
-        >
-          {dropdownContent}
-        </div>
-      )}
+      {open && <DropdownContentLG> {dropdownContent}</DropdownContentLG>}
     </div>
   );
 });
 
+const DropdownContentLG = forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ children }, ref) => {
+  useEffect(() => {
+    const dropdownContent = ref.current;
+    if (dropdownContent) {
+      dropdownContent.style.opacity = "1";
+      dropdownContent.style.transform = "translateY(0)";
+    }
+  }, [ref]);
+  return (
+    <div ref={ref} className={clsx(styles.dropdownContent)}>
+      {children}
+    </div>
+  );
+});
 export default Dropdown;
