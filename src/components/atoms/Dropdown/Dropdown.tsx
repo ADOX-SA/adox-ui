@@ -3,7 +3,7 @@ import React, { forwardRef, useCallback, useEffect, useRef } from "react";
 import styles from "./Dropdown.module.css";
 import clsx from "clsx";
 import useOutsideClick from "@/hooks/useOutsideClick";
-import { css } from "@emotion/css";
+import DropdownContent from "./components/DropdownContent";
 
 export type DropdownProps = {
   dropdownContent: React.ReactNode;
@@ -47,6 +47,7 @@ const Dropdown: React.FC<DropdownProps> = forwardRef<
       } = dropdownContentRef.current.getBoundingClientRect();
       const isScreenCuttingTheDropdownContent = dx + dw > ww;
       const isDropdownContentBiggerThanWindow = dw > ww;
+
       const childBoundingRect = childRef.current?.getBoundingClientRect();
       if (childBoundingRect) {
         if (isScreenCuttingTheDropdownContent) {
@@ -83,26 +84,13 @@ const Dropdown: React.FC<DropdownProps> = forwardRef<
   return (
     <div className={clsx(styles.dropdown)} ref={mainDivRef}>
       <div ref={childRef}>{children}</div>
-      {open && <DropdownContentLG> {dropdownContent}</DropdownContentLG>}
+      {open && (
+        <DropdownContent ref={dropdownContentRef}>
+          {dropdownContent}
+        </DropdownContent>
+      )}
     </div>
   );
 });
 
-const DropdownContentLG = forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ children }, ref) => {
-  useEffect(() => {
-    const dropdownContent = ref.current;
-    if (dropdownContent) {
-      dropdownContent.style.opacity = "1";
-      dropdownContent.style.transform = "translateY(0)";
-    }
-  }, [ref]);
-  return (
-    <div ref={ref} className={clsx(styles.dropdownContent)}>
-      {children}
-    </div>
-  );
-});
 export default Dropdown;

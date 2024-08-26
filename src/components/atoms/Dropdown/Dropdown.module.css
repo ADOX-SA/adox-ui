@@ -9,9 +9,3 @@
   top: 100%;
   left: 0;
 }
-
-@media screen and (max-width: 480px) {
-  .dropdownContent {
-    /* desplegar desde abajo de la pantalla */
-  }
-}

@@ -32,7 +32,16 @@ export const Default = {
         `}
       >
         <Text as="h1" size="xl">
-          ASPIFAPSFASPO sdf sf sdfsd fsdASPI FAPSFASPO sdf sf sdfsd fsd
+          Pagina de inicio
+        </Text>
+        <Text as="h1" size="xl">
+          Pagina de inicio
+        </Text>
+        <Text as="h1" size="xl">
+          Pagina de inicio
+        </Text>
+        <Text as="h1" size="xl">
+          Pagina de inicio
         </Text>
       </div>
     ),

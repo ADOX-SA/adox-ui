@@ -7,6 +7,6 @@ export * from "./Dropdown";
 export * from "./Icon/custom";
 export * from "./Icon";
 export * from "./Icon/models";
-export * from "./Input";
+export * from "./inputs/Input";
 export * from "./Text";
 export * from "./Tooltip";

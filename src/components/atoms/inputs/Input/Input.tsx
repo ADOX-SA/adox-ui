@@ -8,12 +8,12 @@ import React, {
 } from "react";
 import styles from "./Input.module.css";
 import clsx from "clsx";
-import { Icon } from "../Icon";
-import { Text } from "../Text";
+import { Icon } from "../../Icon";
+import { Text } from "../../Text";
 import { Container } from "@/components/layout/Container";
 import { input_width } from "./input.styles";
 import { InputProps } from "./interfaces";
-import { AlertContainer } from "../AlertContainer";
+import { AlertContainer } from "../../AlertContainer";
 
 const Input: React.FC<InputProps> = forwardRef<HTMLInputElement, InputProps>(
   (props, ref) => {

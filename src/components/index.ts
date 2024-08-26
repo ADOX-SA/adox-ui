@@ -9,7 +9,7 @@ export * from "./atoms/Dropdown";
 export * from "./atoms/Icon/custom";
 export * from "./atoms/Icon";
 export * from "./atoms/Icon/models";
-export * from "./atoms/Input";
+export * from "./atoms/inputs/Input";
 export * from "./atoms/Text";
 export * from "./atoms/TextArea";
 export * from "./atoms/Tooltip";
