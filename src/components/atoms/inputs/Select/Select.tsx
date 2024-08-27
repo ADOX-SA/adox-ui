@@ -16,7 +16,7 @@ const Select = ({
   required,
   dropdownOptions,
   value,
-  size = "xs",
+  size,
   nativeSize,
   variant,
   rounded,
@@ -25,7 +25,6 @@ const Select = ({
   defaultValue,
   disabled,
   canSearch,
-  wrap,
   width,
   ...props
 }: DropdownProps) => {
@@ -86,15 +85,17 @@ const Select = ({
     ref.current?.dispatchEvent(event);
   };
 
+  const moverTextoSiHayOverflow = () => {};
+
   return (
     <div
       className={classNames(
         styles.dropdownContainer,
         css`
-          ${!wrap && `width: var(--sys-input-width-${width});`}
+          ${!IS_WRAP && `width: var(--sys-input-width-${width});`}
         `,
         {
-          [styles["wrap"]]: width == "wrap",
+          [styles["wrap"]]: IS_WRAP,
         }
       )}
       onClick={() =>
@@ -104,7 +105,7 @@ const Select = ({
       onBlur={blur}
       tabIndex={disabled ? undefined : 0}
     >
-      {label && !wrap && (
+      {label && !IS_WRAP && (
         <Text as="label" className={inputStyles.label} htmlFor={props.id}>
           {label}
         </Text>
@@ -115,7 +116,8 @@ const Select = ({
           [inputStyles["disabled"]]: disabled,
           [inputStyles[`input--variant-${variant}`]]: variant,
           [inputStyles[`input--rounded-${rounded}`]]: rounded,
-          [styles["wrap"]]: wrap,
+          [inputStyles[`input--size-${size}`]]: size,
+          [styles["wrap"]]: IS_WRAP,
           [inputStyles["wrong"]]:
             (required && !completed) || (props.customAlert && !inputState),
         })}
@@ -126,11 +128,15 @@ const Select = ({
             size="md"
             className={inputStyles.value}
             style={{
-              textAlign: !wrap ? "left" : "center",
+              textAlign: !IS_WRAP ? "left" : "center",
               opacity: selected ? 1 : 0.5,
             }}
+            // onMouseEnter={(e) => {
+            //   e.currentTarget.style.color = "red";
+            //   moverTextoSiHayOverflow();
+            // }}
           >
-            {!wrap ? selected?.label ?? placeholder : selected?.label ?? "-"}
+            {!IS_WRAP ? selected?.label ?? placeholder : selected?.label ?? "-"}
           </Text>
         ) : (
           <input
@@ -139,7 +145,13 @@ const Select = ({
             onChange={searchChange}
           />
         )}
-        {size !== "sm" && !wrap && <Icon nameIcon="adox-downCaret" />}
+        {!IS_WRAP && (
+          <Icon
+            color="var(--color-base-500)"
+            size="1em"
+            nameIcon="adox-downCaret"
+          />
+        )}
       </div>
       {inputState && (
         <div
@@ -168,7 +180,7 @@ const Select = ({
                 handleChange(item);
               }}
               style={{
-                textAlign: !wrap ? "left" : "center",
+                textAlign: !IS_WRAP ? "left" : "center",
               }}
             >
               {item.label}

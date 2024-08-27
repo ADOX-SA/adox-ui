@@ -1,4 +1,4 @@
-@import url("../Input//Input.module.css");
+@import url("../Input/Input.module.css");
 .input {
   border-color: var(--color-gray-300);
   transition-duration: 300ms;
@@ -6,10 +6,6 @@
 
 /* Para input file y otros input tipo hidden */
 .value {
-  font-family: var(--ads-font-family);
-  font-size: 16px;
-  line-height: 16px;
-  height: 14px;
   color: var(--sys-color-on-surface);
   margin: 0;
 }
@@ -41,23 +37,6 @@
   border-color: var(--md-sys-color-primary);
   border-left: 4px solid var(--md-sys-color-primary);
 }
-
-.input-small {
-  width: var(--ads-input-width-sm);
-}
-
-.input-medium {
-  width: var(--ads-input-width-md);
-}
-
-.input-large {
-  width: var(--ads-input-width-lg);
-}
-
-.input-max {
-  width: 100%;
-}
-
 .input.wrong {
   background-color: var(--md-sys-color-error-container);
   border-color: var(--md-sys-on-error-container);

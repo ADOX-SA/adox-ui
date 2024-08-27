@@ -18,13 +18,13 @@ type Story = StoryObj<typeof Select>;
 export const Default = {
   args: {
     dropdownOptions: [
-      { label: "Option 1", value: "1" },
-      { label: "Option 2", value: "2" },
-      { label: "Option 3", value: "3" },
+      { label: "Option 100", value: "100" },
+      { label: "Option 2000000", value: "2000000" },
+      { label: "Option 30000000000000", value: "30000000000000" },
     ],
     placeholder: "Select an option",
     width: "lg",
-    size: "lg",
+    size: "xl",
     rounded: "md",
     variant: "underlined",
   },

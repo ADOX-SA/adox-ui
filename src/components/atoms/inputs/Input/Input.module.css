@@ -124,19 +124,19 @@
 .input--size-xs {
   font-size: var(--sys-font-size-xs);
   line-height: var(--sys-input-height-xs);
-  height: var(--sys-input-height-xs);
+  /* height: var(--sys-input-height-xs); */
 }
 
 .input--size-sm {
   font-size: var(--sys-font-size-sm);
   line-height: var(--sys-input-height-sm);
-  height: var(--sys-input-height-sm);
+  /* height: var(--sys-input-height-sm); */
 }
 
 .input--size-md {
   font-size: var(--sys-font-size-md);
   line-height: var(--sys-input-height-md);
-  height: var(--sys-input-height-md);
+  /* height: var(--sys-input-height-md); */
 }
 
 .input--size-lg {
