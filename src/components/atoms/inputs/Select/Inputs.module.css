@@ -14,46 +14,47 @@
   font-size: 16px;
   line-height: 16px;
   height: 14px;
-  color: var(--md-sys-color-on-surface);
+  color: var(--sys-color-on-surface);
   opacity: 0.5;
   margin: 0;
 }
 /* -------------- */
 
 .input::placeholder {
-  color: var(--md-sys-color-on-surface-variant);
+  color: var(--sys-color-on-surface-variant);
   opacity: 0.5;
 }
 
 .input:hover {
-  border-color: var(--md-sys-color-primary);
+  border-color: var(--sys-color-primary);
 }
 
 .input:focus::placeholder {
-  color: var(--md-sys-color-primary);
+  color: var(--sys-color-primary);
 }
 .focus,
 .input:focus {
-  border-color: var(--md-sys-color-primary);
-  border-left: 4px solid var(--md-sys-color-primary);
+  border-color: var(--sys-color-primary);
+  border-left: 4px solid var(--sys-color-primary);
 }
 .input.wrong {
-  background-color: var(--md-sys-color-error-container);
-  border-color: var(--md-sys-on-error-container);
-  color: var(--md-sys-color-on-error-container);
+  background-color: var(--sys-color-error-container);
+  border-color: var(--sys-on-error-container);
+  color: var(--sys-color-on-error-container);
 }
 
 .input.wrong + label,
 .input.wrong::placeholder {
-  color: var(--md-sys-color-on-error-container);
+  color: var(--sys-color-on-error-container);
 }
 
 .input.wrong:focus::placeholder {
-  color: var(--md-sys-color-error);
+  color: var(--sys-color-error);
 }
 
 .disabled {
-  filter: grayscale(0.5);
+  color: var(--color-base-400) !important;
+  /* filter: grayscale(0.2); */
   cursor: not-allowed;
 }
 
@@ -70,7 +71,7 @@
   padding: 0px 0px;
   border-radius: 3px;
   font-size: 12px;
-  color: var(--md-sys-color-error);
+  color: var(--sys-color-error);
   margin-top: -18px;
   opacity: 0;
   animation-name: error-animation;

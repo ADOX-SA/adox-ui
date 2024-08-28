@@ -1,3 +1,4 @@
+@import url("./Inputs.module.css");
 .dropdownContainer {
   position: relative;
   display: flex;
@@ -20,6 +21,8 @@
 }
 .dropdown.wrap {
   justify-content: center;
+  min-width: 2em;
+  padding: 0.5em;
 }
 
 .dropdown.focus {
@@ -35,8 +38,8 @@
   flex-direction: column;
   position: absolute;
   width: inherit;
-  top: calc(var(--ads-input-height) - 10px);
-  z-index: 1000;
+  top: 100%;
+  z-index: var(--sys-zindex-dropdown);
   padding: 0.25em;
   outline: none;
   background-color: var(--sys-color-surface);
@@ -56,16 +59,18 @@
   overflow-y: auto;
 }
 .dropdownOptionsContainerLabel {
-  top: calc(var(--ads-input-height) + 18px);
+  /*tampooc se si funiciona esto, igual el ads es del design viejo*/
+  top: calc(var(--ads-input-height));
 }
 .dropdownOptionsContainer {
+  /*nose si funcinoa esto*/
   scrollbar-width: auto;
   scrollbar-color: var(--input-text-placeholder) var(--input-background);
 }
 
 /* Chrome, Edge, and Safari */
 .dropdownOptionsContainer::-webkit-scrollbar {
-  width: 20px;
+  width: 10px;
 }
 
 .dropdownOptionsContainer::-webkit-scrollbar-track {
@@ -74,8 +79,9 @@
 }
 
 .dropdownOptionsContainer::-webkit-scrollbar-thumb {
-  background-color: var(--md-sys-color-primary);
-  border: 8px solid var(--md-sys-color-surface);
+  background-color: var(--sys-color-primary);
+  width: 100%;
+  border: 2px solid var(--sys-color-surface);
   border-radius: 10px;
   height: 5px;
 }
@@ -115,18 +121,12 @@
 }
 
 .optionSelected {
-  color: var(--sys-color-primary);
-  font-weight: bold;
+  color: var(--sys-color-primary) !important;
+  font-weight: bold !important;
 }
 
-.maxOptions-5 {
-  max-height: calc(20px + 34px * 5);
-}
-.maxOptions-10 {
-  max-height: calc(20px + 34px * 10);
-}
-.maxOptions-15 {
-  max-height: calc(20px + 34px * 15);
+.search {
+  cursor: text;
 }
 
 @keyframes up {
@@ -163,4 +163,15 @@
   user-select: none;
   font-style: italic;
   opacity: 0.5;
+}
+
+.overflowtext {
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  white-space: nowrap;
+
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  color: var(--sys-color-on-surface);
 }

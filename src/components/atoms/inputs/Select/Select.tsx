@@ -1,6 +1,5 @@
-import React, { ChangeEvent, createRef, useState } from "react";
+import React, { ChangeEvent, createRef, useEffect, useState } from "react";
 import classNames from "clsx";
-import inputStyles from "./Inputs.module.css";
 import styles from "./Select.module.css";
 import { DropdownProps } from "./interfaces";
 import { Icon } from "@/components/atoms/Icon";
@@ -15,12 +14,10 @@ const Select = ({
   onChange = () => {},
   required,
   dropdownOptions,
-  value,
   size,
   nativeSize,
   variant,
   rounded,
-  name,
   maxOptionsBeforeScroll,
   defaultValue,
   disabled,
@@ -28,13 +25,13 @@ const Select = ({
   width,
   ...props
 }: DropdownProps) => {
-  const [inputState, setInputState] = useState(true);
+  const [inputState, setInputState] = useState(false);
   const [completed, setCompleted] = useState(true);
   const ref = createRef<HTMLSelectElement>();
 
-  const [options, setOptions] = useState(dropdownOptions);
+  const [options, setOptions] = useState([] as DropdownOptions[]);
   const [selected, setSelected] = useState<undefined | DropdownOptions>(
-    options.find((item) => item.value === value) ??
+    options.find((item) => item.value === props.value) ??
       options.find((item) => item.value === defaultValue)
   );
 
@@ -55,7 +52,7 @@ const Select = ({
         })
       );
     } else {
-      setOptions(dropdownOptions);
+      setOptions(dropdownOptions as DropdownOptions[]);
     }
   };
 
@@ -85,7 +82,43 @@ const Select = ({
     ref.current?.dispatchEvent(event);
   };
 
-  const moverTextoSiHayOverflow = () => {};
+  const moverTextoSiHayOverflow = (
+    e:
+      | React.MouseEvent<HTMLParagraphElement, MouseEvent>
+      | React.MouseEvent<HTMLSpanElement, MouseEvent>
+  ) => {
+    const element = e.currentTarget;
+    const anchoTexto = element.scrollWidth;
+    const anchoContenedor = element.clientWidth;
+    const distanciaDesplazamiento = anchoTexto - anchoContenedor;
+
+    e.currentTarget.style.transition = ` ${
+      (distanciaDesplazamiento / 100) * 5
+    }s `;
+    e.currentTarget.style.transform = `translateX(-${distanciaDesplazamiento}px)`;
+  };
+
+  const cortarAnimation = (
+    e:
+      | React.MouseEvent<HTMLParagraphElement, MouseEvent>
+      | React.MouseEvent<HTMLSpanElement, MouseEvent>
+  ) => {
+    e.currentTarget.style.transition = "0s";
+    e.currentTarget.style.transform = "translateX(0)";
+  };
+
+  useEffect(() => {
+    if (dropdownOptions.length > 0) {
+      if (typeof dropdownOptions[0] === "string") {
+        const options = dropdownOptions.map((item) => {
+          return { label: item, value: item };
+        });
+        setOptions(options as DropdownOptions[]);
+      } else {
+        setOptions(dropdownOptions as DropdownOptions[]);
+      }
+    }
+  }, [dropdownOptions]);
 
   return (
     <div
@@ -106,19 +139,20 @@ const Select = ({
       tabIndex={disabled ? undefined : 0}
     >
       {label && !IS_WRAP && (
-        <Text as="label" className={inputStyles.label} htmlFor={props.id}>
+        <Text as="label" className={styles.label} htmlFor={props.id}>
           {label}
         </Text>
       )}
       <div
-        className={classNames(inputStyles.input, styles.dropdown, {
+        className={classNames(styles.input, styles.dropdown, {
           [styles["focus"]]: inputState,
-          [inputStyles["disabled"]]: disabled,
-          [inputStyles[`input--variant-${variant}`]]: variant,
-          [inputStyles[`input--rounded-${rounded}`]]: rounded,
-          [inputStyles[`input--size-${size}`]]: size,
+          [styles["search"]]: canSearch,
+          // [styles["disabled"]]: disabled,
+          [styles[`input--variant-${variant}`]]: variant,
+          [styles[`input--rounded-${rounded}`]]: rounded,
+          [styles[`input--size-${size}`]]: size,
           [styles["wrap"]]: IS_WRAP,
-          [inputStyles["wrong"]]:
+          [styles["wrong"]]:
             (required && !completed) || (props.customAlert && !inputState),
         })}
       >
@@ -126,21 +160,25 @@ const Select = ({
           <Text
             as="p"
             size="md"
-            className={inputStyles.value}
+            className={classNames(styles.value, styles.overflowtext, {
+              [styles["disabled"]]: disabled,
+            })}
             style={{
               textAlign: !IS_WRAP ? "left" : "center",
               opacity: selected ? 1 : 0.5,
             }}
-            // onMouseEnter={(e) => {
-            //   e.currentTarget.style.color = "red";
-            //   moverTextoSiHayOverflow();
-            // }}
+            onMouseEnter={(e) => {
+              moverTextoSiHayOverflow(e);
+            }}
+            onMouseLeave={(e) => {
+              cortarAnimation(e);
+            }}
           >
             {!IS_WRAP ? selected?.label ?? placeholder : selected?.label ?? "-"}
           </Text>
         ) : (
           <input
-            className={classNames(inputStyles.searchInput)}
+            className={classNames(styles.searchInput)}
             ref={searchFocus}
             onChange={searchChange}
           />
@@ -155,11 +193,15 @@ const Select = ({
       </div>
       {inputState && (
         <div
-          className={classNames(styles.dropdownOptionsContainer, {
-            [styles[`maxOptions-${maxOptionsBeforeScroll}`]]:
-              maxOptionsBeforeScroll,
-            [styles[`dropdownOptionsContainerLabel`]]: label,
-          })}
+          className={classNames(
+            styles.dropdownOptionsContainer,
+            css`
+              max-height: ${Number(maxOptionsBeforeScroll) * 2}rem;
+            `,
+            {
+              [styles[`dropdownOptionsContainerLabel`]]: label,
+            }
+          )}
         >
           {options.length === 0 && canSearch && (
             <Text
@@ -173,14 +215,25 @@ const Select = ({
             <Text
               as="span"
               key={item.value}
-              className={classNames(styles.dropdownOptions, {
-                [styles.optionSelected]: selected?.value === item.value,
-              })}
+              className={classNames(
+                styles.dropdownOptions,
+                styles.overflowtext,
+                {
+                  [styles.optionSelected]: selected?.value === item.value,
+                }
+              )}
               onClick={() => {
                 handleChange(item);
               }}
               style={{
                 textAlign: !IS_WRAP ? "left" : "center",
+              }}
+              onMouseEnter={(e) => {
+                // e.currentTarget.scrollWidth > e.currentTarget.clientWidth &&
+                moverTextoSiHayOverflow(e);
+              }}
+              onMouseLeave={(e) => {
+                cortarAnimation(e);
               }}
             >
               {item.label}
@@ -190,7 +243,7 @@ const Select = ({
       )}
       {(props.customAlert || (required && !completed)) && (
         <AlertContainer>
-          <Text as="p" className={classNames(inputStyles.error)}>
+          <Text as="p" className={classNames(styles.error)}>
             {props.customAlert
               ? props.customAlert
               : required
@@ -200,13 +253,10 @@ const Select = ({
         </AlertContainer>
       )}
       <select
-        value={value}
         onChange={(e) => {
           onChange ? onChange(e) : () => {};
         }}
         ref={ref}
-        name={name}
-        required={required}
         hidden
         size={nativeSize}
         {...props}
