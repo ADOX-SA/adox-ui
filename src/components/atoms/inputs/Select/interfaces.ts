@@ -24,8 +24,8 @@ export interface DropdownProps
   nativeSize?: InputHTMLAttributes<HTMLInputElement>["size"];
   placeholder?: string;
   onChange?: ChangeEventHandler<HTMLSelectElement>;
-  dropdownOptions: DropdownOptions[] | string[];
-  width: WidthParam | "full" | "wrap";
+  dropdownOptions: DropdownOptions[] | string[] | number[];
+  width?: WidthParam | "full" | "wrap";
   // info?: string;
   defaultValue?: string;
   maxOptionsBeforeScroll?: DropdownOptionsBeforeScroll;

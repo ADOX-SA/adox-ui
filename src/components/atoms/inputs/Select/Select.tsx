@@ -13,8 +13,8 @@ const Select = ({
   placeholder,
   onChange = () => {},
   required,
-  dropdownOptions,
-  size,
+  dropdownOptions = [],
+  size = "md",
   nativeSize,
   variant,
   rounded,
@@ -22,7 +22,7 @@ const Select = ({
   defaultValue,
   disabled,
   canSearch,
-  width,
+  width = "md",
   ...props
 }: DropdownProps) => {
   const [inputState, setInputState] = useState(false);
@@ -109,11 +109,17 @@ const Select = ({
 
   useEffect(() => {
     if (dropdownOptions.length > 0) {
-      if (typeof dropdownOptions[0] === "string") {
+      if (typeof dropdownOptions[0] !== "object") {
         const options = dropdownOptions.map((item) => {
           return { label: item, value: item };
         });
         setOptions(options as DropdownOptions[]);
+        const _selected = dropdownOptions.find((item) => item === defaultValue);
+        _selected &&
+          setSelected({
+            label: _selected.toString() ?? dropdownOptions[0],
+            value: _selected.toString() ?? dropdownOptions[0],
+          });
       } else {
         setOptions(dropdownOptions as DropdownOptions[]);
       }
@@ -139,7 +145,12 @@ const Select = ({
       tabIndex={disabled ? undefined : 0}
     >
       {label && !IS_WRAP && (
-        <Text as="label" className={styles.label} htmlFor={props.id}>
+        <Text
+          size={size}
+          as="label"
+          className={styles.label}
+          htmlFor={props.id}
+        >
           {label}
         </Text>
       )}
@@ -159,7 +170,7 @@ const Select = ({
         {(canSearch && !inputState) || !canSearch ? (
           <Text
             as="p"
-            size="md"
+            size={size}
             className={classNames(styles.value, styles.overflowtext, {
               [styles["disabled"]]: disabled,
             })}
@@ -205,6 +216,7 @@ const Select = ({
         >
           {options.length === 0 && canSearch && (
             <Text
+              size={size}
               as="p"
               className={classNames(styles.dropdownOptionsNoResult, {})}
             >
@@ -213,6 +225,7 @@ const Select = ({
           )}
           {options.map((item) => (
             <Text
+              size={size}
               as="span"
               key={item.value}
               className={classNames(

@@ -1,0 +1,84 @@
+:root {
+  --color: var(--sys-color-outline);
+}
+.switch {
+  display: flex;
+  border-radius: 34px;
+  outline: 1px solid var(--color);
+  cursor: pointer;
+  align-items: center;
+  flex-direction: row;
+  transition: linear;
+}
+
+.slider {
+  border-radius: 30px;
+  animation-name: standby;
+  animation-duration: 0.4s;
+  animation-fill-mode: forwards;
+}
+
+.size-small input:checked + .slider {
+  animation-name: on-sm;
+  animation-duration: 0.4s;
+  animation-fill-mode: forwards;
+}
+.size-medium input:checked + .slider {
+  animation-name: on-md;
+  animation-duration: 0.4s;
+  animation-fill-mode: forwards;
+}
+.size-large input:checked + .slider {
+  animation-name: on-lg;
+  animation-duration: 0.4s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes on-sm {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(28px);
+  }
+}
+
+@keyframes standby {
+  from {
+    transform: translateX(28px);
+    background-color: var(--color);
+  }
+  to {
+    background-color: var(--color);
+    transform: translateX(0);
+  }
+}
+
+.size-small {
+  width: 54px;
+  height: 24px;
+  padding: 5px;
+}
+.size-medium {
+  width: 68px;
+  height: 30px;
+  padding: 4px;
+}
+.size-large {
+  width: 76px;
+  height: 36px;
+  padding-left: 4px;
+}
+
+.size-small .slider {
+  width: 16px;
+  height: 16px;
+}
+.size-medium .slider {
+  width: 24px;
+  height: 24px;
+}
+.size-large .slider {
+  width: 28px;
+  height: 28px;
+}

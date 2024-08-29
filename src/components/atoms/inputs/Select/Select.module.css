@@ -4,6 +4,7 @@
   display: flex;
   flex-direction: column;
   user-select: none;
+  cursor: pointer;
 }
 
 .dropdown {
@@ -38,6 +39,8 @@
   flex-direction: column;
   position: absolute;
   width: inherit;
+  min-width: 2.5em;
+
   top: 100%;
   z-index: var(--sys-zindex-dropdown);
   padding: 0.25em;
