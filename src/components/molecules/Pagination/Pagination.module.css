@@ -1,0 +1,31 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.paginationItem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  user-select: none;
+  cursor: pointer;
+  width: 28px;
+  height: 28px;
+  font-size: 16px;
+}
+.paginationItem {
+  font-family: Roboto;
+  color: var(--sys-color-on-background);
+}
+.paginationItem:hover {
+  filter: brightness(1.1);
+}
+.paginationItem.active {
+  background-color: var(--sys-color-primary);
+  color: var(--sys-color-on-primary);
+}
+.paginationItem.disabled {
+  cursor: default;
+  opacity: 0;
+}

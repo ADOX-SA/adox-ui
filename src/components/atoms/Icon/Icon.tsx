@@ -6,6 +6,7 @@ import { Lib } from "./models";
 import { TypesPropsIcon } from "./interface";
 import clsx from "clsx";
 import { css } from "@emotion/css";
+import { Size } from "../../../models/sizes";
 
 export function Icon({
   nameIcon,
@@ -54,14 +55,28 @@ export function Icon({
   const ElementIcon: IconType = (
     ReactIcons[rIlib] as { [key: string]: IconType }
   )[nameIcon];
+  const isOneOfTextTypeSize =
+    size !== undefined
+      ? ["t-xs", "t-sm", "t-md", "t-lg", "t-xl"].includes(size as Size)
+      : false;
 
+  const set_size = (prop: typeof width | typeof height) => {
+    if (size) {
+      if (isOneOfTextTypeSize) {
+        const _size = size.toString().replace("t-", "");
+        return `var(--sys-font-size-${_size})`;
+      }
+      return size;
+    }
+    return prop || 24;
+  };
   return (
     <ElementIcon
       className={clsx(
         className,
         css`
-          width: ${propsIcon?.width || propsIcon.width || 24};
-          height: ${propsIcon?.height || 24};
+          width: ${set_size(propsIcon.width)};
+          height: ${set_size(propsIcon.height)};
         `
       )}
       {...propsIcon}

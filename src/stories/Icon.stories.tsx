@@ -18,9 +18,7 @@ type Story = StoryObj<typeof Icon>;
 export const Default = {
   args: {
     nameIcon: "adox-loading",
-    size: "400px",
-    width: "500px",
-
+    size: "xs",
     color: "red",
   },
 } satisfies Story;
