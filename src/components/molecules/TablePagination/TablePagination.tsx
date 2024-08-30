@@ -1,20 +1,20 @@
 "use client";
 import React from "react";
-import styles from "./Pagination.module.css";
+import styles from "./TablePagination.module.css";
 import Text from "../../atoms/Text/Text";
 import { Select } from "@/components/atoms/inputs/Select";
 import { Icon } from "@/components/atoms";
 import clsx from "clsx";
 import { css } from "@emotion/css";
 
-export type PaginationProps = {
+export type TablePaginationProps = {
   size?: "xs" | "sm" | "md" | "lg";
   currentPage: number;
   totalItems: number;
   limit: number;
 };
 
-const Pagination: React.FC<PaginationProps> = ({
+const TablePagination: React.FC<TablePaginationProps> = ({
   currentPage,
   totalItems,
   limit,
@@ -88,4 +88,4 @@ const Pagination: React.FC<PaginationProps> = ({
   );
 };
 
-export default Pagination;
+export default TablePagination;

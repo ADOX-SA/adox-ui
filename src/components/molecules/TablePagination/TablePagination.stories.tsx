@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import Pagination from "./Pagination";
+import TablePagination from "./TablePagination";
 
 const meta = {
-  title: "Pagination",
-  component: Pagination,
+  title: "Molecules/TablePagination",
+  component: TablePagination,
   tags: ["autodocs"],
   parameters: {
     layout: "fullscreen",
   },
   argTypes: {},
-} satisfies Meta<typeof Pagination>;
+} satisfies Meta<typeof TablePagination>;
 
 export default meta;
 
-type Story = StoryObj<typeof Pagination>;
+type Story = StoryObj<typeof TablePagination>;
 
 export const Default = {
   args: {
