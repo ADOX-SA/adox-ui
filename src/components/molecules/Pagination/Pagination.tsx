@@ -45,9 +45,9 @@ export default function Pagination({
         >
           <Icon nameIcon="CgChevronLeft" size={`t-${size}`} />
         </li>
-        {pages.map((page) => (
+        {pages.map((page, i) => (
           <li
-            key={page}
+            key={i}
             className={classNames(styles.paginationItem, {
               [styles.active]: page === currentPage,
               [styles.disabled]: page === undefined,

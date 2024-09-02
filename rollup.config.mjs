@@ -3,6 +3,7 @@ import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import typescript from "@rollup/plugin-typescript";
 import postcss from "rollup-plugin-postcss";
+import postCssSvg from "postcss-svg";
 import dts from "rollup-plugin-dts";
 
 // This is required to read package.json file when
@@ -32,6 +33,7 @@ export default [
       resolve(),
       commonjs(),
       typescript(),
+      postCssSvg(),
       postcss({
         extensions: [".css"],
       }),

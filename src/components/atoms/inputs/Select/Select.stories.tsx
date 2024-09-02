@@ -31,10 +31,11 @@ export const Default = {
       "50",
     ],
     placeholder: "Select an option",
-    width: "lg",
-    size: "xl",
+    width: "wrap",
+    size: "sm",
     rounded: "md",
     variant: "underlined",
     disabled: true,
+    noHideArrow: true,
   },
 } satisfies Story;

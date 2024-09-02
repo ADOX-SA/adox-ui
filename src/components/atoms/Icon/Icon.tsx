@@ -10,7 +10,6 @@ import { Size } from "../../../models/sizes";
 
 export function Icon({
   nameIcon,
-  // propsIcon,
   color,
   size,
   width,
@@ -22,39 +21,6 @@ export function Icon({
    * @param {string} nameIcon - Nombre del icono.
    */
 
-  const propsIcon = {
-    color,
-    size,
-    width: width || size || 24,
-    height: height || size || 24,
-    ...rest,
-  };
-
-  if (nameIcon.startsWith("adox-")) {
-    const mnameIcon = nameIcon.replace("adox-", "");
-    const iconObj = iconsMap[mnameIcon as keyof typeof iconsMap]; // Add index signature
-
-    return (
-      <svg
-        stroke="currentColor"
-        fill="currentColor"
-        strokeWidth="0"
-        viewBox={iconObj.viewBox}
-        children={iconObj.svg}
-        className={className}
-        {...propsIcon}
-      />
-    );
-  }
-
-  const rIlib: Lib = nameIcon
-    .replace(/([a-z0-9])([A-Z])/g, "$1 $2")
-    .split(" ")[0]
-    .toLocaleLowerCase() as Lib;
-
-  const ElementIcon: IconType = (
-    ReactIcons[rIlib] as { [key: string]: IconType }
-  )[nameIcon];
   const isOneOfTextTypeSize =
     size !== undefined
       ? ["t-xs", "t-sm", "t-md", "t-lg", "t-xl"].includes(size as Size)
@@ -70,18 +36,73 @@ export function Icon({
     }
     return prop || 24;
   };
+  const propsIcon = {
+    color,
+    size,
+    ...rest,
+  };
+
+  if (nameIcon.startsWith("adox-")) {
+    const mnameIcon = nameIcon.replace("adox-", "");
+    const iconObj = iconsMap[mnameIcon as keyof typeof iconsMap]; // Add index signature
+
+    return (
+      <svg
+        stroke="currentColor"
+        fill="currentColor"
+        fillOpacity={1}
+        strokeWidth="0"
+        viewBox={iconObj.viewBox}
+        children={iconObj.svg}
+        className={clsx(
+          className,
+          css`
+            width: ${set_size(width)};
+            height: ${set_size(height)};
+          `
+        )}
+        {...propsIcon}
+      />
+    );
+  }
+
+  const rIlib: Lib = nameIcon
+    .replace(/([a-z0-9])([A-Z])/g, "$1 $2")
+    .split(" ")[0]
+    .toLocaleLowerCase() as Lib;
+
+  const ElementIcon: IconType = (
+    ReactIcons[rIlib] as { [key: string]: IconType }
+  )[nameIcon];
   return (
     <ElementIcon
       className={clsx(
         className,
         css`
-          width: ${set_size(propsIcon.width)};
-          height: ${set_size(propsIcon.height)};
+          width: ${set_size(width)};
+          height: ${set_size(height)};
         `
       )}
       {...propsIcon}
     />
   );
 }
+
+// const AdoxIcon = (propsIcon: TypesPropsIcon): JSX.Element => {
+//   const mnameIcon = propsIcon.nameIcon.replace("adox-", "");
+//   const iconObj = iconsMap[mnameIcon as keyof typeof iconsMap]; // Add index signature
+
+//   return (
+//     <svg
+//       stroke="currentColor"
+//       fill="currentColor"
+//       strokeWidth="0"
+//       viewBox={iconObj.viewBox}
+//       children={iconObj.svg}
+//       className={propsIcon.className}
+//       {...propsIcon}
+//     />
+//   );
+// };
 
 export default Icon;

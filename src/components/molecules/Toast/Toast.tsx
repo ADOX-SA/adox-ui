@@ -44,7 +44,7 @@ const Toast = ({ message, status, progress = 100 }: ToastProps) => {
         padding="none"
         flexDirection="row"
         alignItems="center"
-        customClassNames={classNames(styles.row)}
+        className={classNames(styles.row)}
       >
         <Icon
           nameIcon={mapStatus(status).name as IconName}

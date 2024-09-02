@@ -27,6 +27,7 @@ export interface DropdownProps
   dropdownOptions: DropdownOptions[] | string[] | number[];
   width?: WidthParam | "full" | "wrap";
   // info?: string;
+  noHideArrow?: boolean;
   defaultValue?: string;
   maxOptionsBeforeScroll?: DropdownOptionsBeforeScroll;
 }

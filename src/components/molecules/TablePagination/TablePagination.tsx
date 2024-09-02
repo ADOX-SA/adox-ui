@@ -36,6 +36,7 @@ const TablePagination: React.FC<TablePaginationProps> = ({
           dropdownOptions={["5", "10", "15"]}
           defaultValue={limit.toString()}
           maxOptionsBeforeScroll="5"
+          noHideArrow
         />
       </div>
       <div
@@ -54,6 +55,7 @@ const TablePagination: React.FC<TablePaginationProps> = ({
           width="wrap"
           dropdownOptions={pages}
           maxOptionsBeforeScroll="5"
+          noHideArrow
         />
         <Text size={size} className={styles.noWrap} as="span">
           de {totalPages} paginas

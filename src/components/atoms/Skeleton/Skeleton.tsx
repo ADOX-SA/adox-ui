@@ -21,9 +21,7 @@ export type SkeletonProps = {
  * @prop {"none" | "sm" | "md" | "lg" | "full"} rounded - El redondeo de las esquinas del esqueleto.
  * @prop {false | "wave" | "pulse"} animation - La animación del esqueleto.
  * @example
- * ```tsx
- * <Skeleton width="10em" height="10em" rounded="none" animation="wave" />
- *  ```
+
  * FIXME: Quiero poder hacer esto:
  * - [ ] Quiero poder cambiar la variante de skeleton. (rect, circle, text) aunque con rounded y height y width se puede hacer. (No es necesario)
  * - [ ] Quiero pasarle un color de fondo.

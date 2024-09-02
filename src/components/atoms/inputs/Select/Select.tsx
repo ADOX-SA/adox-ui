@@ -23,6 +23,7 @@ const Select = ({
   disabled,
   canSearch,
   width = "md",
+  noHideArrow,
   ...props
 }: DropdownProps) => {
   const [inputState, setInputState] = useState(false);
@@ -36,6 +37,7 @@ const Select = ({
   );
 
   const IS_WRAP = width == "wrap";
+  const showCaret = !IS_WRAP || noHideArrow;
   /* FUNCIONES PARA EL MANEJO DE ESTADOS */
 
   const searchFocus = (input: HTMLInputElement | null) => {
@@ -194,7 +196,7 @@ const Select = ({
             onChange={searchChange}
           />
         )}
-        {!IS_WRAP && (
+        {showCaret && (
           <Icon
             color="var(--color-base-500)"
             size="1em"
