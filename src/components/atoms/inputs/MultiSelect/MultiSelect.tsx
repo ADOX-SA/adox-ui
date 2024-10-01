@@ -50,6 +50,7 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
   /* FUNCIONES PARA EL MANEJO DE ESTADOS */
   const onClickOutside = useCallback(
     (e: MouseEvent) => {
+      if (!canSearch) return;
       const target = e.target as HTMLElement;
       if (
         inputState &&
@@ -281,6 +282,8 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
                 name={item.value}
                 value={item.value}
                 checked={isOptionSelected(item)}
+                readOnly
+                // onChange={() => handleChange(item)}
               />
               <Text
                 size={size}
